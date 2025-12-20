@@ -140,79 +140,26 @@
       <div class="map-wrap">
         <div class="map" role="img" aria-label="Service map">
 
-<svg viewBox="0 0 900 420" class="map-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+<svg viewBox="0 0 1078 1025" class="map-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
   <defs>
     <linearGradient id="glow" x1="0" x2="1">
       <stop offset="0" stop-color="rgba(42,255,214,0.0)"/>
       <stop offset="0.5" stop-color="rgba(42,255,214,0.35)"/>
       <stop offset="1" stop-color="rgba(42,255,214,0.0)"/>
     </linearGradient>
-
-    <linearGradient id="txStroke" x1="0" x2="1">
-      <stop offset="0" stop-color="rgba(42,255,214,0.55)"/>
-      <stop offset="0.5" stop-color="rgba(42,255,214,0.95)"/>
-      <stop offset="1" stop-color="rgba(42,255,214,0.55)"/>
-    </linearGradient>
-
-    <path id="txShape" d="
-      M210 95
-      L410 95
-      L410 140
-      L470 140
-      L470 160
-      L560 160
-      L650 185
-      L720 215
-      L770 260
-      L740 330
-      L640 365
-      L520 360
-      L420 380
-      L320 370
-      L255 340
-      L265 270
-      L235 250
-      L235 205
-      L210 185
-      L200 145
-      L210 115
-      Z
-    "/>
-
-    <clipPath id="txClip">
-      <use href="#txShape"/>
-    </clipPath>
   </defs>
 
-  <use href="#txShape"
-    fill="rgba(7,10,15,0.35)"
-    stroke="url(#txStroke)"
-    stroke-width="2.6"
-    opacity="0.95"
-  />
+  <image href="./texas_outline_transparent.png" x="0" y="0" width="1078" height="1025" opacity="0.95" />
 
-  <g clip-path="url(#txClip)" opacity="0.22">
-    <path d="M150 120H820 M150 150H820 M150 180H820 M150 210H820 M150 240H820 M150 270H820 M150 300H820 M150 330H820 M150 360H820"
-          stroke="#9fb4c6" stroke-width="1"/>
-    <path d="M210 60V400 M250 60V400 M290 60V400 M330 60V400 M370 60V400 M410 60V400 M450 60V400 M490 60V400 M530 60V400 M570 60V400 M610 60V400 M650 60V400 M690 60V400 M730 60V400"
-          stroke="#9fb4c6" stroke-width="1"/>
+  <g>
+    <circle class="tx-dot" cx="13.5"  cy="450.8" r="8" />
+    <circle class="tx-dot" cx="808.3" cy="352.2" r="8" />
+    <circle class="tx-dot" cx="730.8" cy="590.1" r="8" />
+    <circle class="tx-dot" cx="669.2" cy="670.3" r="8" />
+    <circle class="tx-dot" cx="925.5" cy="638.1" r="8" />
   </g>
 
-  <g clip-path="url(#txClip)" stroke="#2affd6" stroke-width="2" opacity="0.55" fill="none">
-    <path d="M270 240 C360 220, 470 230, 560 250 S690 290, 735 295"/>
-    <path d="M610 300 C640 300, 670 305, 735 295"/>
-    <path d="M590 335 C625 320, 675 305, 735 295"/>
-  </g>
-
-  <g opacity="0.95">
-    <circle class="tx-dot" cx="270" cy="240" r="7"/>
-    <circle class="tx-dot" cx="645" cy="230" r="7"/>
-    <circle class="tx-dot" cx="610" cy="300" r="7"/>
-    <circle class="tx-dot" cx="590" cy="335" r="7"/>
-    <circle class="tx-dot" cx="735" cy="295" r="7"/>
-  </g>
-
-  <rect class="scanline" x="0" y="0" width="900" height="26" fill="url(#glow)"/>
+  <rect class="scanline" x="0" y="0" width="1078" height="26" fill="url(#glow)"/>
 </svg>
           <!-- overlay labels -->
           <div class="map-legend">
