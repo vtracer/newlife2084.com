@@ -528,3 +528,5 @@ body{
   letter-spacing: .8px;
   dominant-baseline: middle;
 }
+
+.tx-dot{ fill:#b9c9d8; opacity:.95; }
