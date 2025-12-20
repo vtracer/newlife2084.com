@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Department of Digital Ethics</title>
+  <meta name="color-scheme" content="light" />
+
+  <link rel="stylesheet" href="dode.css?v=1" />
+  <script defer src="dode.js?v=1"></script>
+</head>
+
+<body>
+  <!-- Gov banner -->
+  <header class="gov-banner" role="banner">
+    <div class="gov-banner-inner">
+      <span class="us-flag" aria-hidden="true">
+        <!-- simple inline US flag (small) -->
+        <svg width="26" height="16" viewBox="0 0 190 100" focusable="false">
+          <rect width="190" height="100" fill="#fff"/>
+          <!-- red stripes -->
+          <g fill="#b22234">
+            <rect y="0"   width="190" height="7.7"/>
+            <rect y="15.4" width="190" height="7.7"/>
+            <rect y="30.8" width="190" height="7.7"/>
+            <rect y="46.2" width="190" height="7.7"/>
+            <rect y="61.6" width="190" height="7.7"/>
+            <rect y="77.0" width="190" height="7.7"/>
+            <rect y="92.3" width="190" height="7.7"/>
+          </g>
+          <!-- canton -->
+          <rect width="76" height="53.8" fill="#3c3b6e"/>
+          <!-- stars (stylized dots, tiny) -->
+          <g fill="#fff" opacity="0.95">
+            <!-- 9 rows -->
+            <g transform="translate(6,6)">
+              <!-- row 1 (6) -->
+              <circle cx="0" cy="0" r="1.7"/><circle cx="12" cy="0" r="1.7"/><circle cx="24" cy="0" r="1.7"/><circle cx="36" cy="0" r="1.7"/><circle cx="48" cy="0" r="1.7"/><circle cx="60" cy="0" r="1.7"/>
+              <!-- row 2 (5) -->
+              <circle cx="6" cy="6" r="1.7"/><circle cx="18" cy="6" r="1.7"/><circle cx="30" cy="6" r="1.7"/><circle cx="42" cy="6" r="1.7"/><circle cx="54" cy="6" r="1.7"/>
+              <!-- row 3 (6) -->
+              <circle cx="0" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="24" cy="12" r="1.7"/><circle cx="36" cy="12" r="1.7"/><circle cx="48" cy="12" r="1.7"/><circle cx="60" cy="12" r="1.7"/>
+              <!-- row 4 (5) -->
+              <circle cx="6" cy="18" r="1.7"/><circle cx="18" cy="18" r="1.7"/><circle cx="30" cy="18" r="1.7"/><circle cx="42" cy="18" r="1.7"/><circle cx="54" cy="18" r="1.7"/>
+              <!-- row 5 (6) -->
+              <circle cx="0" cy="24" r="1.7"/><circle cx="12" cy="24" r="1.7"/><circle cx="24" cy="24" r="1.7"/><circle cx="36" cy="24" r="1.7"/><circle cx="48" cy="24" r="1.7"/><circle cx="60" cy="24" r="1.7"/>
+              <!-- row 6 (5) -->
+              <circle cx="6" cy="30" r="1.7"/><circle cx="18" cy="30" r="1.7"/><circle cx="30" cy="30" r="1.7"/><circle cx="42" cy="30" r="1.7"/><circle cx="54" cy="30" r="1.7"/>
+              <!-- row 7 (6) -->
+              <circle cx="0" cy="36" r="1.7"/><circle cx="12" cy="36" r="1.7"/><circle cx="24" cy="36" r="1.7"/><circle cx="36" cy="36" r="1.7"/><circle cx="48" cy="36" r="1.7"/><circle cx="60" cy="36" r="1.7"/>
+              <!-- row 8 (5) -->
+              <circle cx="6" cy="42" r="1.7"/><circle cx="18" cy="42" r="1.7"/><circle cx="30" cy="42" r="1.7"/><circle cx="42" cy="42" r="1.7"/><circle cx="54" cy="42" r="1.7"/>
+              <!-- row 9 (6) -->
+              <circle cx="0" cy="48" r="1.7"/><circle cx="12" cy="48" r="1.7"/><circle cx="24" cy="48" r="1.7"/><circle cx="36" cy="48" r="1.7"/><circle cx="48" cy="48" r="1.7"/><circle cx="60" cy="48" r="1.7"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+
+      <span class="gov-banner-text">
+        An official website of the United States Government
+      </span>
+
+      <span class="sep" aria-hidden="true">•</span>
+      <a class="gov-link" href="#" aria-label="How you know this is official">How you know</a>
+    </div>
+  </header>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand">
+        <!-- Placeholder logo file: dode_logo.png -->
+        <img src="dode_logo.png" alt="Department of Digital Ethics seal" class="seal" />
+
+        <div class="brand-text">
+          <div class="agency">Department of Digital Ethics</div>
+          <div class="sub">Office of Context, Compliance & Public Trust</div>
+          <div class="slogan">Accountability through standards and oversight.</div>
+        </div>
+      </div>
+
+      <form class="search" id="siteSearch" role="search" aria-label="Site search">
+        <label class="sr-only" for="q">Search</label>
+        <input id="q" name="q" placeholder="Search advisories, registries, enforcement…" autocomplete="off" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <nav class="topnav" aria-label="Primary">
+      <a href="#guidance">Guidance</a>
+      <a href="#advisories">Advisories</a>
+      <a href="#enforcement">Enforcement</a>
+      <a href="#registry">Approved Providers</a>
+      <a href="#report">Report</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidenav" aria-label="Section navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#standards">Context Layer Standards</a>
+      <a href="#classifications">Misinformation Classifications</a>
+      <a href="#risk">Risk Scoring</a>
+      <a href="#audit">Audit Requests</a>
+      <a href="#notices">Public Notices</a>
+    </aside>
+
+    <section class="content" id="home">
+      <div class="alert" role="status" aria-live="polite">
+        <b>Public Notice:</b> Context inserts may be applied to public content streams based on automated risk classification.
+        <span class="muted">This page reflects current guidance.</span>
+      </div>
+
+      <h1>Public Advisories & Compliance Updates</h1>
+      <p class="lede">
+        The Department of Digital Ethics issues standards, conducts oversight, and maintains public registries for regulated digital services.
+      </p>
+
+      <div class="cards" id="advisories">
+        <article class="card" id="guidance">
+          <div class="kicker">Guidance • Updated <span data-today></span></div>
+          <h2>Quarantine Context Standards (QCS)</h2>
+          <p>Implementation requirements for redactions, throttling, and context inserts applied to misinformation-eligible publications.</p>
+          <a class="btn" href="#">Read guidance</a>
+        </article>
+
+        <article class="card" id="registry">
+          <div class="kicker">Registry</div>
+          <h2>Approved Provider Registry</h2>
+          <p>Certified vendors, compliance grades, and service classifications for regulated digital consciousness programs.</p>
+          <a class="btn" href="#">Open registry</a>
+        </article>
+
+        <article class="card" id="enforcement">
+          <div class="kicker danger">Enforcement</div>
+          <h2>Recent Actions</h2>
+          <p>Enforcement actions and corrective measures issued under applicable digital ethics standards and policy.</p>
+          <a class="btn" href="#">View actions</a>
+        </article>
+      </div>
+
+      <section class="lower" id="report" aria-label="Report section">
+        <div class="panel">
+          <h3>Report a compliance concern</h3>
+          <p>Submit a report regarding context handling, labeling integrity, or regulated service promotion.</p>
+          <a class="btn secondary" href="#">Start report</a>
+        </div>
+
+        <div class="panel">
+          <h3>Request an audit</h3>
+          <p>Request a review of labeling, throttling, and context insert application for a publication or feed.</p>
+          <a class="btn secondary" href="#">Request audit</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="notices">
+    <div class="footer-inner">
+      <span>Department of Digital Ethics • United States Government</span>
+      <span class="footer-right">
+        <a href="#">Accessibility</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#">Privacy</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#">Policies</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
