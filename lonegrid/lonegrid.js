@@ -66,8 +66,13 @@
     setBadge(idBadge, state.revokes < 6 ? "OK" : "MONITOR", state.revokes < 6 ? "ok" : "warn");
 
     // overall pill: degrade if anything is "down"
-    const anyDown = [loadBadge, routeBadge, contBadge, idBadge].some(b => b && b.classList.contains("down"));
-    const anyWarn = [loadBadge, routeBadge, contBadge, idBadge].some(b => b && b.classList.contains("warn"));
+    const frictionBadge = $("#badgeFriction");
+
+		const anyDown = [loadBadge, routeBadge, idBadge, frictionBadge]
+  	.some(b => b && b.classList.contains("down"));
+
+		const anyWarn = [loadBadge, routeBadge, idBadge, frictionBadge]
+  	.some(b => b && b.classList.contains("warn"));
     if(overall){
       overall.classList.remove("ok","warn","danger");
       if(anyDown){
