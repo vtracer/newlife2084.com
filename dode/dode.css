@@ -35,12 +35,20 @@ body{
   flex-wrap:wrap;
 }
 .us-flag{
-  display:inline-flex;
-  align-items:center;
-  border-radius:3px;
-  overflow:hidden;
-  box-shadow:0 0 0 1px rgba(255,255,255,.15);
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
 }
+
+.us-flag img{
+  width: 22px;          /* tiny */
+  height: 14px;         /* tiny */
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.18);
+}
+
 .gov-banner-text{ opacity:.95; }
 .gov-link{ color:#93c5fd; text-decoration:underline; }
 .sep{ opacity:.55; }
