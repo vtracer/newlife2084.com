@@ -24,6 +24,8 @@
     revokes: 2,
     peering: "STABLE",
     dispatch: "AUTO",
+    frictionYield: 420,
+		frictionIndex: 62,
   };
 
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
