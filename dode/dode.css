@@ -24,6 +24,7 @@ body{
   background:#0a0f18;
   color:#cbd5e1;
   font-size:.85rem;
+  width: 100%;
 }
 
 .gov-banner-inner{
@@ -54,6 +55,25 @@ body{
 .gov-banner-text{ opacity:.95; }
 .gov-link{ color:#93c5fd; text-decoration:underline; }
 .sep{ opacity:.55; }
+
+.gov-banner .gov-banner-inner{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* optional: respect iOS safe areas */
+@supports (padding: max(0px)) {
+  .gov-banner .gov-banner-inner{
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-right));
+  }
+}
 
 /* masthead */
 .masthead{
