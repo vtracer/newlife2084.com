@@ -140,26 +140,37 @@
       <div class="map-wrap">
         <div class="map" role="img" aria-label="Service map">
 
-<svg viewBox="0 0 1078 1025" class="map-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+<svg viewBox="0 0 1000 600" class="map-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
   <defs>
     <linearGradient id="glow" x1="0" x2="1">
-      <stop offset="0" stop-color="rgba(42,255,214,0.0)"/>
+      <stop offset="0" stop-color="rgba(42,255,214,0)"/>
       <stop offset="0.5" stop-color="rgba(42,255,214,0.35)"/>
-      <stop offset="1" stop-color="rgba(42,255,214,0.0)"/>
+      <stop offset="1" stop-color="rgba(42,255,214,0)"/>
     </linearGradient>
   </defs>
 
-  <image href="Texas-outline.png" x="0" y="0" width="1078" height="1025" opacity="0.95" />
-
-  <g>
-    <circle class="tx-dot" cx="13.5"  cy="450.8" r="8" />
-    <circle class="tx-dot" cx="808.3" cy="352.2" r="8" />
-    <circle class="tx-dot" cx="730.8" cy="590.1" r="8" />
-    <circle class="tx-dot" cx="669.2" cy="670.3" r="8" />
-    <circle class="tx-dot" cx="925.5" cy="638.1" r="8" />
+  <g opacity="0.18">
+    <path d="M0 60H1000M0 120H1000M0 180H1000M0 240H1000M0 300H1000M0 360H1000M0 420H1000M0 480H1000M0 540H1000" stroke="#9fb4c6" stroke-width="1"/>
+    <path d="M80 0V600M160 0V600M240 0V600M320 0V600M400 0V600M480 0V600M560 0V600M640 0V600M720 0V600M800 0V600M880 0V600M960 0V600" stroke="#9fb4c6" stroke-width="1"/>
   </g>
 
-  <rect class="scanline" x="0" y="0" width="1078" height="26" fill="url(#glow)"/>
+  <image href="./texas_outline_transparent.png" x="160" y="30" width="680" height="540" opacity="0.95" />
+
+  <g stroke="#2affd6" stroke-width="2" opacity="0.55" fill="none">
+    <path d="M168.5 270.0 L620.6 345.7 L743.3 371.4"/>
+    <path d="M168.5 270.0 L669.5 218.6 L743.3 371.4"/>
+    <path d="M581.8 388.4 L620.6 345.7 L743.3 371.4"/>
+  </g>
+
+  <g opacity="0.95">
+    <circle class="tx-dot" cx="168.5" cy="270.0" r="7"/>
+    <circle class="tx-dot" cx="669.5" cy="218.6" r="7"/>
+    <circle class="tx-dot" cx="620.6" cy="345.7" r="7"/>
+    <circle class="tx-dot" cx="581.8" cy="388.4" r="7"/>
+    <circle class="tx-dot" cx="743.3" cy="371.4" r="7"/>
+  </g>
+
+  <rect class="scanline" x="0" y="0" width="1000" height="26" fill="url(#glow)"/>
 </svg>
           <!-- overlay labels -->
           <div class="map-legend">
