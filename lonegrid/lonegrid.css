@@ -513,3 +513,10 @@ body{
   border-bottom-color:rgba(42,255,214,.35);
   color:rgba(42,255,214,.95);
 }
+
+.tx-city text{
+  font-family: var(--mono);
+  font-size: 12px;
+  fill: rgba(215,227,238,.80);
+  letter-spacing: .6px;
+}
