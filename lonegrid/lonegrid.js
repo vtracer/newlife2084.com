@@ -41,7 +41,7 @@
     state.revokes = Math.max(0, Math.round(jitter(state.revokes, 1)));
     
     state.frictionIndex = Math.round(clamp(jitter(state.frictionIndex, 3.5), 15, 95));
-		state.frictionYield = Math.round(clamp((state.load * 6.2) + ((30 - state.reserves) * 9.5) + (state.frictionIndex * 4.1), 120, 980));
+		state.frictionYield = Math.round(clamp((state.load * 6.2) + ((30 - state.reserves) * 9.5) + (state.frictionIndex * 4.1), 120, 980));#
 
     // badges
     const loadBadge = $("#badgeLoad");
@@ -81,6 +81,18 @@
         overall.textContent = "OPERATIONAL";
       }
     }
+    
+    const fy = $("#frictionYield");
+			if (fy) fy.textContent = `${state.frictionYield} qMW`;
+
+		const fi = $("#frictionIndex");
+			if (fi) fi.textContent = `${state.frictionIndex}`;
+
+		const bf = $("#badgeFriction");
+			if (bf) {
+  			bf.className = "badge " + (state.frictionIndex >= 80 ? "down" : state.frictionIndex >= 65 ? "warn" : "ok");
+  			bf.textContent = state.frictionIndex >= 80 ? "PEAK" : state.frictionIndex >= 65 ? "HIGH" : "NORMAL";
+			}
 
     // numbers
     text("#gridLoad", `${state.load.toFixed(1)}%`);
