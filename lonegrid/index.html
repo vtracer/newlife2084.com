@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LoneGrid • Utility Authority</title>
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="LoneGrid Utility Authority status, load, and service notices for the Silicon Prairie Network State." />
+
+  <link rel="stylesheet" href="./lonegrid.css?v=1" />
+  <script defer src="./lonegrid.js?v=1"></script>
+</head>
+
+<body>
+  <!-- Utility banner (NOT Neo-Sentinel; industrial ops vibe) -->
+  <header class="utility-banner" role="banner">
+    <div class="utility-banner-inner">
+      <span class="mark" aria-hidden="true">LG</span>
+      <span class="utility-banner-text">
+        LoneGrid Utility Authority • Silicon Prairie Network State
+      </span>
+
+      <span class="spacer" aria-hidden="true"></span>
+
+      <span class="clock" aria-label="Network time">
+        NET TIME: <b id="netTime">--:--:--</b>
+      </span>
+      <span class="sep" aria-hidden="true">•</span>
+      <a class="banner-link" href="/globaltrust" title="Context classification and labeling">GlobalTrust™</a>
+      <span class="sep" aria-hidden="true">•</span>
+      <a class="banner-link" href="/dode" title="Oversight standards and compliance notices">DoDE</a>
+    </div>
+  </header>
+
+  <header class="mast">
+    <div class="mast-inner">
+      <div class="brand">
+        <!-- Replace with your asset later if you want -->
+        <div class="logo" aria-hidden="true">
+          <div class="logo-grid"></div>
+          <div class="logo-bolt"></div>
+        </div>
+
+        <div class="brand-text">
+          <div class="name">LoneGrid</div>
+          <div class="sub">Transmission • Identity Rail • Continuity Uptime</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#status">Status</a>
+        <a href="#outages">Outages</a>
+        <a href="#notices">Notices</a>
+        <a href="#portal">Portal</a>
+      </nav>
+    </div>
+
+    <div class="mast-strip" role="status" aria-live="polite">
+      <span class="pill ok" id="overallPill">OPERATIONAL</span>
+      <span class="strip-text">
+        Live service snapshot • load, routing, and continuity rails monitored under SPNS Utility Charter §12.4
+      </span>
+      <span class="spacer" aria-hidden="true"></span>
+      <span class="mono" id="loadLine">LOAD: ---% • RESERVES: ---% • LATENCY: --ms</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- STATUS GRID -->
+    <section class="panel" id="status" aria-label="System status">
+      <div class="panel-head">
+        <h1>System Status</h1>
+        <p class="muted">Infrastructure services reported by region and rail. Numbers are “accurate.”</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <h2>Grid Load</h2>
+            <span class="badge ok" id="badgeLoad">OK</span>
+          </div>
+          <div class="big">
+            <span class="mono" id="gridLoad">--%</span>
+          </div>
+          <div class="small muted">
+            Rolling 15m demand • Dispatch: <span class="mono" id="dispatchMode">AUTO</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h2>Backbone Routing</h2>
+            <span class="badge ok" id="badgeRoute">OK</span>
+          </div>
+          <div class="big">
+            <span class="mono" id="routeLatency">--ms</span>
+          </div>
+          <div class="small muted">
+            Metro rings • Peering: <span class="mono" id="peering">STABLE</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h2>Continuity Rail</h2>
+            <span class="badge warn" id="badgeCont">MONITOR</span>
+          </div>
+          <div class="big">
+            <span class="mono" id="contUptime">99.9%</span>
+          </div>
+          <div class="small muted">
+            Credential handoff + session escrow • Drift: <span class="mono" id="drift">0.0%</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h2>Identity Relay</h2>
+            <span class="badge ok" id="badgeId">OK</span>
+          </div>
+          <div class="big">
+            <span class="mono" id="idOps">—/s</span>
+          </div>
+          <div class="small muted">
+            Auth handshakes • Revocations: <span class="mono" id="revokes">0</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OUTAGES / MAP -->
+    <section class="panel" id="outages" aria-label="Outages and service map">
+      <div class="panel-head row">
+        <div>
+          <h2>Outages</h2>
+          <p class="muted">Regional interruptions, maintenance windows, and “unexpected” enforcement-related service reductions.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="power">Power</button>
+          <button class="chip" data-filter="backbone">Backbone</button>
+          <button class="chip" data-filter="continuity">Continuity</button>
+          <button class="chip" data-filter="identity">Identity</button>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map" role="img" aria-label="Service map">
+          <!-- Simple SVG map placeholder (no real geography, just vibes) -->
+          <svg viewBox="0 0 900 420" class="map-svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="glow" x1="0" x2="1">
+                <stop offset="0" stop-color="rgba(42,255,214,0.0)"/>
+                <stop offset="0.5" stop-color="rgba(42,255,214,0.35)"/>
+                <stop offset="1" stop-color="rgba(42,255,214,0.0)"/>
+              </linearGradient>
+            </defs>
+
+            <!-- background grid -->
+            <g opacity="0.18">
+              <path d="M0 60H900M0 120H900M0 180H900M0 240H900M0 300H900M0 360H900" stroke="#9fb4c6" stroke-width="1"/>
+              <path d="M80 0V420M160 0V420M240 0V420M320 0V420M400 0V420M480 0V420M560 0V420M640 0V420M720 0V420M800 0V420" stroke="#9fb4c6" stroke-width="1"/>
+            </g>
+
+            <!-- “network” lines -->
+            <g stroke="#2affd6" stroke-width="2" opacity="0.55">
+              <path d="M110 300 C200 220, 260 210, 330 160 S480 90, 620 140 S760 250, 820 210" fill="none"/>
+              <path d="M120 140 C240 120, 280 140, 360 220 S520 360, 690 300 S820 240, 860 320" fill="none"/>
+              <path d="M240 360 C340 280, 410 260, 480 220 S640 140, 740 150" fill="none"/>
+            </g>
+
+            <!-- nodes -->
+            <g fill="#b9c9d8" opacity="0.95">
+              <circle cx="110" cy="300" r="7"/>
+              <circle cx="330" cy="160" r="7"/>
+              <circle cx="480" cy="220" r="7"/>
+              <circle cx="620" cy="140" r="7"/>
+              <circle cx="740" cy="150" r="7"/>
+              <circle cx="820" cy="210" r="7"/>
+              <circle cx="360" cy="220" r="7"/>
+              <circle cx="690" cy="300" r="7"/>
+              <circle cx="860" cy="320" r="7"/>
+              <circle cx="120" cy="140" r="7"/>
+            </g>
+
+            <!-- scanning line (animated via CSS) -->
+            <rect class="scanline" x="0" y="0" width="900" height="26" fill="url(#glow)"/>
+          </svg>
+
+          <!-- overlay labels -->
+          <div class="map-legend">
+            <div class="legend-item"><span class="dot ok"></span>Operational</div>
+            <div class="legend-item"><span class="dot warn"></span>Degraded</div>
+            <div class="legend-item"><span class="dot down"></span>Interruption</div>
+          </div>
+        </div>
+
+        <div class="list" id="outageList" aria-label="Outage list">
+          <!-- JS fills these -->
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTICES -->
+    <section class="panel" id="notices" aria-label="Service notices">
+      <div class="panel-head">
+        <h2>Service Notices</h2>
+        <p class="muted">Routine maintenance, compliance-related modifications, and infrastructure advisories.</p>
+      </div>
+
+      <div class="notices">
+        <details class="notice" open>
+          <summary>
+            <span class="pill warn">MAINT</span>
+            Metro Ring Patch Window • 02:00–02:12 NET • Packet normalization update
+          </summary>
+          <div class="notice-body">
+            LoneGrid will apply routing patches to metro peering rings. Brief jitter may occur. This is not censorship, it’s “traffic shaping.”
+          </div>
+        </details>
+
+        <details class="notice">
+          <summary>
+            <span class="pill ok">INFO</span>
+            Continuity Rail Audit Sync • Registry refresh
+          </summary>
+          <div class="notice-body">
+            Continuity session escrow records will sync with the Approved Provider Registry. If your session “expires,” try being more compliant.
+          </div>
+        </details>
+
+        <details class="notice">
+          <summary>
+            <span class="pill danger">ADVISORY</span>
+            Enforcement-linked service reductions • select districts
+          </summary>
+          <div class="notice-body">
+            Certain districts may experience reduced throughput consistent with public safety directives. Please consult DoDE guidance.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- PORTAL -->
+    <section class="panel" id="portal" aria-label="Customer portal">
+      <div class="panel-head row">
+        <div>
+          <h2>Customer Portal</h2>
+          <p class="muted">Sign in to view bills, identity rail sessions, and continuity uptime guarantees.</p>
+        </div>
+        <div class="muted mono">
+          PORTAL STATUS: <span id="portalStatus">AVAILABLE</span>
+        </div>
+      </div>
+
+      <div class="portal">
+        <form class="login" id="loginForm" autocomplete="off">
+          <label>
+            Account ID
+            <input name="account" placeholder="LG-########" inputmode="numeric" />
+          </label>
+
+          <label>
+            Access Token
+            <input name="token" placeholder="••••••••••••" />
+          </label>
+
+          <button type="submit">Sign In</button>
+          <p class="tiny muted">
+            By signing in you agree to “reasonable monitoring,” “context stability checks,” and the comforting illusion of choice.
+          </p>
+        </form>
+
+        <div class="portal-side">
+          <div class="mini">
+            <div class="mini-title">Quick Actions</div>
+            <a class="mini-link" href="#">Report an outage</a>
+            <a class="mini-link" href="#">Request a service review</a>
+            <a class="mini-link" href="#">Download utility charter</a>
+          </div>
+
+          <div class="mini">
+            <div class="mini-title">Uptime Pledge</div>
+            <div class="mono bigline">99.94%</div>
+            <div class="tiny muted">Last 30 NET days • exclusions apply • uptime not guaranteed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <b>LoneGrid Utility Authority</b>
+        <div class="tiny muted">A service instrumentality of the Silicon Prairie Network State.</div>
+      </div>
+      <div class="footer-links">
+        <a href="/newlife2084">New Life Technologies</a>
+        <a href="http://www.maroon-series.art">LoneGrid is a fictional organisation in Mar00n.</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
