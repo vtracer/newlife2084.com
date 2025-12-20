@@ -326,7 +326,7 @@ body{
 }
 @keyframes scan{
   0%{ transform: translateY(-30px); }
-  100%{ transform: translateY(360px); }
+  100%{ transform: translateY(650px); }
 }
 
 .map-legend{
