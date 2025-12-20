@@ -39,6 +39,9 @@
     state.drift = clamp(jitter(state.drift, 0.03), 0, 0.8);
     state.idOps = Math.round(clamp(jitter(state.idOps, 25), 120, 980));
     state.revokes = Math.max(0, Math.round(jitter(state.revokes, 1)));
+    
+    state.frictionIndex = Math.round(clamp(jitter(state.frictionIndex, 3.5), 15, 95));
+		state.frictionYield = Math.round(clamp((state.load * 6.2) + ((30 - state.reserves) * 9.5) + (state.frictionIndex * 4.1), 120, 980));
 
     // badges
     const loadBadge = $("#badgeLoad");
