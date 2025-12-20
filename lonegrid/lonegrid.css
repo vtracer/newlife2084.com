@@ -39,23 +39,12 @@ body{
   font-size:.88rem;
 }
 
-.lg-brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
-}
-
 .lg-logo{
   width:40px;
   height:40px;
   object-fit:contain;
   display:block;
 }
-
-.lg-brandtext{ min-width:0; }
-.lg-name{ font-weight:900; letter-spacing:.4px; }
-.lg-tagline{ opacity:.75; font-size:.9rem; }
 
 .spns-flag{
   width:18px !important;
@@ -96,9 +85,6 @@ body{
 }
 .utility-banner-text{ opacity:.95; }
 .clock{ font-family:var(--mono); opacity:.88; }
-.banner-link{ color:rgba(42,255,214,.92); text-decoration:none; }
-.banner-link:hover{ text-decoration:underline; }
-.sep{ opacity:.55; }
 .spacer{ flex:1; }
 
 /* ===== Mast ===== */
@@ -131,22 +117,7 @@ body{
   position:relative;
   overflow:hidden;
 }
-.logo-grid{
-  position:absolute; inset:0;
-  background:
-    linear-gradient(to right, rgba(215,227,238,.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(215,227,238,.12) 1px, transparent 1px);
-  background-size:10px 10px;
-  opacity:.6;
-}
-.logo-bolt{
-  position:absolute; left:50%; top:50%;
-  width:16px; height:16px;
-  transform:translate(-50%,-50%) rotate(12deg);
-  background:linear-gradient(180deg, rgba(42,255,214,1), rgba(42,255,214,.35));
-  clip-path:polygon(40% 0%, 70% 0%, 52% 45%, 80% 45%, 30% 100%, 48% 55%, 25% 55%);
-  filter: drop-shadow(0 0 10px rgba(42,255,214,.35));
-}
+
 .brand-text .name{
   font-weight:950;
   letter-spacing:.4px;
