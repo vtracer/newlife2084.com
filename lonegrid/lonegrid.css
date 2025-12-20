@@ -66,21 +66,14 @@ body{
 .lg-name{ font-weight:900; letter-spacing:.4px; }
 .lg-tagline{ opacity:.75; font-size:.9rem; }
 
-.lg-state{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  opacity:.9;
-  flex:0 0 auto;
-}
-
 .spns-flag{
-  width:22px;
-  height:14px;
+  width:18px
+  height:12px
+  max-width:18px 
+  max-height:12px 
   object-fit:cover;
   display:block;
   border-radius:2px;
-  box-shadow:0 0 0 1px rgba(255,255,255,.10);
 }
 
 .lg-topbar{
@@ -88,17 +81,6 @@ body{
   align-items:center;
   gap:12px;
   margin-left:auto;          
-}
-
-/* tiny flag */
-.spns-flag{
-  width:22px;
-  height:14px;
-  object-fit:cover;
-  display:block;
-  max-width:22px;
-  max-height:14px;
-  border-radius:2px;
 }
 
 .lg-state{
