@@ -156,11 +156,16 @@
 
   <image href="Texas_outline.png" x="160" y="30" width="680" height="540" opacity="0.95" />
 
-  <g stroke="#2affd6" stroke-width="2" opacity="0.55" fill="none">
-    <path d="M168.5 270.0 L620.6 345.7 L743.3 371.4"/>
-    <path d="M168.5 270.0 L669.5 218.6 L743.3 371.4"/>
-    <path d="M581.8 388.4 L620.6 345.7 L743.3 371.4"/>
-  </g>
+ <g stroke="#2affd6" stroke-width="2" opacity="0.55" fill="none">
+  <!-- Austin -> El Paso -->
+  <path d="M620.6 345.7 Q470 300 168.5 270.0" />
+  <!-- Austin -> Dallas -->
+  <path d="M620.6 345.7 Q650 300 669.5 218.6" />
+  <!-- Austin -> San Antonio -->
+  <path d="M620.6 345.7 Q595 370 581.8 388.4" />
+  <!-- Austin -> Houston -->
+  <path d="M620.6 345.7 Q710 360 743.3 371.4" />
+</g>
 
   <g opacity="0.95">
     <circle class="tx-dot" cx="168.5" cy="270.0" r="7"/>
