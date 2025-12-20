@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GlobalTrust™ | Verified Context Services</title>
+
+  <meta name="description" content="GlobalTrust™ provides verified context layers, distribution integrity, and reader stability metrics." />
+  <meta property="og:title" content="GlobalTrust™ | Verified Context Services" />
+  <meta property="og:description" content="Verified context layers, distribution integrity, and reader stability metrics." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --ink: #0b1220;
+      --muted: rgba(11,18,32,.62);
+      --line: rgba(11,18,32,.10);
+
+      --brand: #0b5cff;     /* corporate blue */
+      --teal:  #11c5b4;     /* “trust” accent */
+      --ok:    #1fbf75;     /* stability */
+      --warn:  #ffb020;     /* risk */
+      --bad:   #ff3b30;     /* high risk */
+
+      --radius: 18px;
+      --shadow: 0 18px 55px rgba(11,18,32,.10);
+
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+      overflow-x:hidden;
+    }
+
+    /* subtle grid texture (NOT scanlines) */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.35;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(17,197,180,.10), transparent 40%),
+        radial-gradient(circle at 80% 0%, rgba(11,92,255,.10), transparent 45%),
+        linear-gradient(to right, rgba(11,18,32,.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11,18,32,.04) 1px, transparent 1px);
+      background-size: auto, auto, 46px 46px, 46px 46px;
+      z-index:0;
+    }
+
+    .topbar{
+      position:sticky; top:0;
+      z-index:10;
+      backdrop-filter: blur(12px);
+      background: rgba(246,248,251,.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbarInner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
+    }
+
+    .logo{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: conic-gradient(from 210deg, var(--brand), var(--teal), var(--brand));
+      box-shadow: 0 10px 25px rgba(11,92,255,.18);
+      position:relative;
+      flex: 0 0 auto;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset: 9px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.85);
+      box-shadow: inset 0 0 0 1px rgba(11,18,32,.10);
+    }
+
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+    .brandText b{
+      letter-spacing:.6px;
+      font-weight: 900;
+      font-size: .98rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brandText span{
+      color: var(--muted);
+      font-size: .78rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      color: rgba(11,18,32,.78);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .chip.primary{ border-color: rgba(11,92,255,.25); color: rgba(11,92,255,.95); }
+    .chip.teal{ border-color: rgba(17,197,180,.25); color: rgba(17,197,180,.95); }
+
+    main{
+      position:relative;
+      z-index:1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+
+    .hero{
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(11,18,32,.08);
+      padding: 22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      overflow:hidden;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    h1{
+      margin: 6px 0 10px;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.3px;
+    }
+
+    .lede{
+      margin:0;
+      color: var(--muted);
+      max-width: 64ch;
+      font-size: 1.05rem;
+    }
+
+    .ctaRow{
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,92,255,.20);
+      background: rgba(11,92,255,.08);
+      color: rgba(11,92,255,.95);
+      text-decoration:none;
+      font-weight: 800;
+      font-size: .9rem;
+    }
+    .btn:hover{ background: rgba(11,92,255,.12); border-color: rgba(11,92,255,.26); }
+
+    .btn.ghost{
+      border-color: rgba(11,18,32,.12);
+      background: rgba(11,18,32,.03);
+      color: rgba(11,18,32,.78);
+    }
+    .btn.ghost:hover{ background: rgba(11,18,32,.05); }
+
+    .panel{
+      background: linear-gradient(180deg, rgba(11,92,255,.06), rgba(17,197,180,.05));
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .kvs{
+      display:grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style:none;
+      font-size: .92rem;
+    }
+    .kv{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(11,18,32,.07);
+    }
+    .kv span{ color: var(--muted); }
+    .kv b{ font-family: var(--mono); font-size: .86rem; }
+
+    .meter{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.75);
+    }
+    .meterTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      font-size: .86rem;
+      font-weight: 800;
+    }
+    .score{
+      font-family: var(--mono);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.8);
+    }
+    .score.low{ color: var(--ok); border-color: rgba(31,191,117,.25); }
+    .score.med{ color: var(--warn); border-color: rgba(255,176,32,.28); }
+    .score.high{ color: var(--bad); border-color: rgba(255,59,48,.25); }
+
+    .bar{
+      margin-top: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(11,18,32,.08);
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      width: 34%;
+      background: linear-gradient(90deg, var(--ok), var(--warn), var(--bad));
+      border-radius: 999px;
+      transition: width 900ms ease;
+    }
+
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(11,18,32,.08);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(11,18,32,.06);
+    }
+    .card h2{
+      margin: 0 0 8px;
+      font-size: 1rem;
+      letter-spacing: .2px;
+    }
+    .card p{ margin:0; color: var(--muted); }
+
+    .legal{
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(11,18,32,.08);
+      background: rgba(255,255,255,.75);
+      color: rgba(11,18,32,.62);
+      font-size: .92rem;
+    }
+    .legal b{ color: rgba(11,18,32,.85); }
+
+    footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: rgba(11,18,32,.55);
+      font-size: .82rem;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    footer a{ color: rgba(11,92,255,.92); text-decoration:none; }
+    footer a:hover{ text-decoration:underline; }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbarInner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brandText">
+          <b>GlobalTrust™</b>
+          <span>Verified Context Services · A New Life Technologies brand</span>
+        </div>
+      </div>
+
+      <div class="chips" aria-hidden="true">
+        <span class="chip primary">Certified</span>
+        <span class="chip teal">Context Layer</span>
+        <span class="chip">Integrity Controls</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Trust, delivered. Context, enforced.</h1>
+        <p class="lede">
+          GlobalTrust™ provides certified context overlays, distribution integrity controls, and reader stability metrics for public information streams.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn" href="/approved-information.html">Approved Information</a>
+          <a class="btn ghost" href="/policies.html">Policies</a>
+          <a class="btn ghost" href="https://maroon-series.art/Mar00n/">External Content Registry</a>
+        </div>
+
+        <div class="legal">
+          <b>Notice:</b> Context inserts may be applied automatically. Distribution may be throttled. Reader metrics may be retained for quality assurance and service improvement.
+        </div>
+      </div>
+
+      <aside class="panel">
+        <ul class="kvs">
+          <li class="kv"><span>Certification</span><b>GT-CERT / ACTIVE</b></li>
+          <li class="kv"><span>Provider</span><b>NLT / VERIFIED</b></li>
+          <li class="kv"><span>Revision</span><b>2085.1</b></li>
+          <li class="kv"><span>Standard</span><b>QCS ALIGNMENT</b></li>
+        </ul>
+
+        <div class="meter" id="meter">
+          <div class="meterTop">
+            <div>Reader Risk Score</div>
+            <div class="score low" id="riskLabel">LOW · 34</div>
+          </div>
+          <div class="bar"><div class="fill" id="riskFill" style="width:34%"></div></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Context Inserts</h2>
+        <p>Attach certified overlays to unverified claims to reduce downstream harm and improve comprehension fidelity.</p>
+      </div>
+      <div class="card">
+        <h2>Integrity Controls</h2>
+        <p>Throttle distribution when amplification exceeds safe velocity thresholds or signals indicate coordinated spread.</p>
+      </div>
+      <div class="card">
+        <h2>Stability Metrics</h2>
+        <p>Measure reader volatility and cognitive strain indicators. When risk spikes, we intervene with guidance.</p>
+      </div>
+      <div class="card">
+        <h2>Provider Certification</h2>
+        <p>Maintain a registry of certified providers to prevent misinformation about approved services and outcomes.</p>
+      </div>
+      <div class="card">
+        <h2>Reporting</h2>
+        <p>Escalate content for review using structured claims intake and automated evidence extraction pipelines.</p>
+      </div>
+      <div class="card">
+        <h2>Audit Logs</h2>
+        <p>Retention policies vary by jurisdiction, contract tier, and compliance obligations. Naturally.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2084 GlobalTrust™</div>
+      <div>
+        <a href="/privacy.html">Privacy</a> ·
+        <a href="/legal.html">Legal</a> ·
+        <a href="/contact.html">Contact</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // tiny, non-glitchy “enterprise dashboard” liveliness
+    (function(){
+      const label = document.getElementById('riskLabel');
+      const fill  = document.getElementById('riskFill');
+
+      function classify(v){
+        if (v < 38) return { cls:'low', txt:`LOW · ${v}` };
+        if (v < 68) return { cls:'med', txt:`MED · ${v}` };
+        return { cls:'high', txt:`HIGH · ${v}` };
+      }
+
+      function tick(){
+        const v = Math.max(8, Math.min(92, Math.round(26 + Math.random()*22)));
+        const c = classify(v);
+        label.classList.remove('low','med','high');
+        label.classList.add(c.cls);
+        label.textContent = c.txt;
+        fill.style.width = v + '%';
+      }
+
+      tick();
+      setInterval(tick, 9000);
+    })();
+  </script>
+</body>
+</html>
