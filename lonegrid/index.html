@@ -142,87 +142,68 @@
 
 <svg viewBox="0 0 900 420" class="map-svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
   <defs>
-    <!-- scan glow (you already use this) -->
     <linearGradient id="glow" x1="0" x2="1">
       <stop offset="0" stop-color="rgba(42,255,214,0.0)"/>
       <stop offset="0.5" stop-color="rgba(42,255,214,0.35)"/>
       <stop offset="1" stop-color="rgba(42,255,214,0.0)"/>
     </linearGradient>
 
-    <!-- Texas clip so the grid stays inside -->
-    <clipPath id="txClip">
-      <path d="M165 105 L345 95 L410 135 L495 135 L540 170 L620 175 L655 205 L685 255 L720 285 L735 320 L695 360 L520 365 L405 330 L325 310 L250 325 L215 300 L220 250 L195 235 L175 210 L150 190 L145 150 Z"/>
-    </clipPath>
-
-    <!-- A subtle neon gradient stroke for the outline -->
     <linearGradient id="txStroke" x1="0" x2="1">
       <stop offset="0" stop-color="rgba(42,255,214,0.55)"/>
       <stop offset="0.5" stop-color="rgba(42,255,214,0.95)"/>
       <stop offset="1" stop-color="rgba(42,255,214,0.55)"/>
     </linearGradient>
+
+    <clipPath id="txClip" clipPathUnits="userSpaceOnUse">
+      <path id="txShape" d="M190 95 L390 95 L390 145 L455 145 L455 185 L555 185 L640 230 L690 300 L725 330 L705 365 L520 372 L450 345 L360 325 L300 340 L250 315 L255 265 L230 245 L205 205 L190 170 L170 150 L170 115 Z"/>
+    </clipPath>
   </defs>
 
-  <!-- Texas outline -->
-  <path
-    d="M165 105 L345 95 L410 135 L495 135 L540 170 L620 175 L655 205 L685 255 L720 285 L735 320 L695 360 L520 365 L405 330 L325 310 L250 325 L215 300 L220 250 L195 235 L175 210 L150 190 L145 150 Z"
-    fill="rgba(7,10,15,0.35)"
-    stroke="url(#txStroke)"
-    stroke-width="2.4"
-    opacity="0.95"
-  />
+  <path d="M190 95 L390 95 L390 145 L455 145 L455 185 L555 185 L640 230 L690 300 L725 330 L705 365 L520 372 L450 345 L360 325 L300 340 L250 315 L255 265 L230 245 L205 205 L190 170 L170 150 L170 115 Z"
+        fill="rgba(7,10,15,0.35)"
+        stroke="url(#txStroke)"
+        stroke-width="2.4"
+        opacity="0.95"/>
 
-  <!-- Wire grid inside Texas -->
   <g clip-path="url(#txClip)" opacity="0.22">
-    <!-- horizontal -->
     <path d="M120 120H820 M120 150H820 M120 180H820 M120 210H820 M120 240H820 M120 270H820 M120 300H820 M120 330H820 M120 360H820"
           stroke="#9fb4c6" stroke-width="1"/>
-    <!-- vertical -->
     <path d="M170 60V400 M220 60V400 M270 60V400 M320 60V400 M370 60V400 M420 60V400 M470 60V400 M520 60V400 M570 60V400 M620 60V400 M670 60V400 M720 60V400"
           stroke="#9fb4c6" stroke-width="1"/>
   </g>
 
-  <!-- Neon “routes” inside Texas -->
   <g clip-path="url(#txClip)" stroke="#2affd6" stroke-width="2" opacity="0.55" fill="none">
-    <path d="M220 285 C290 250, 340 230, 380 210 S470 170, 560 195 S640 250, 690 300"/>
-    <path d="M240 330 C310 300, 360 290, 420 265 S520 220, 620 230 S680 255, 710 320"/>
-    <path d="M190 200 C260 190, 320 205, 380 240 S470 310, 540 320 S630 290, 675 250"/>
+    <path d="M220 275 C300 240, 360 220, 410 205 S515 175, 585 205 S645 255, 685 300"/>
+    <path d="M235 325 C320 295, 380 285, 440 260 S535 220, 620 235 S670 265, 700 320"/>
+    <path d="M205 200 C290 190, 350 210, 410 245 S505 310, 575 315 S640 285, 675 250"/>
   </g>
 
-  <!-- City nodes -->
-  <g opacity="0.95">
-    <!-- El Paso -->
+  <g clip-path="url(#txClip)" opacity="0.95" fill="#b9c9d8">
     <g class="tx-city">
-      <circle cx="205" cy="235" r="7" fill="#b9c9d8"/>
-      <text x="217" y="239">EL PASO</text>
+      <circle cx="235" cy="235" r="7"/>
+      <text x="247" y="235">EL PASO</text>
     </g>
-
-    <!-- Dallas -->
     <g class="tx-city">
-      <circle cx="520" cy="205" r="7" fill="#b9c9d8"/>
-      <text x="532" y="209">DALLAS</text>
+      <circle cx="535" cy="215" r="7"/>
+      <text x="547" y="215">DALLAS</text>
     </g>
-
-    <!-- Austin -->
     <g class="tx-city">
-      <circle cx="480" cy="265" r="7" fill="#b9c9d8"/>
-      <text x="492" y="269">AUSTIN</text>
+      <circle cx="485" cy="265" r="7"/>
+      <text x="497" y="265">AUSTIN</text>
     </g>
-
-    <!-- San Antonio -->
     <g class="tx-city">
-      <circle cx="455" cy="290" r="7" fill="#b9c9d8"/>
-      <text x="467" y="294">SAN ANTONIO</text>
+      <circle cx="460" cy="290" r="7"/>
+      <text x="472" y="290">SAN ANTONIO</text>
     </g>
-
-    <!-- Houston -->
     <g class="tx-city">
-      <circle cx="575" cy="285" r="7" fill="#b9c9d8"/>
-      <text x="587" y="289">HOUSTON</text>
+      <circle cx="590" cy="285" r="7"/>
+      <text x="602" y="285">HOUSTON</text>
     </g>
   </g>
 
-  <!-- scanning line -->
-  <rect class="scanline" x="0" y="0" width="900" height="26" fill="url(#glow)"/>
+  <g clip-path="url(#txClip)">
+    <rect class="scanline" x="0" y="0" width="900" height="26" fill="url(#glow)"/>
+  </g>
 </svg>
 
           <!-- overlay labels -->
