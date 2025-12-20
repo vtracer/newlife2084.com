@@ -38,6 +38,51 @@ body{
   color:rgba(215,227,238,.88);
   font-size:.88rem;
 }
+
+.lg-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 18px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.lg-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.lg-logo{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+  display:block;
+}
+
+.lg-brandtext{ min-width:0; }
+.lg-name{ font-weight:900; letter-spacing:.4px; }
+.lg-tagline{ opacity:.75; font-size:.9rem; }
+
+.lg-state{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  opacity:.9;
+  flex:0 0 auto;
+}
+
+.spns-flag{
+  width:22px;
+  height:14px;
+  object-fit:cover;
+  display:block;
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.10);
+}
+
 .utility-banner-inner{
   max-width:1100px;
   margin:0 auto;
