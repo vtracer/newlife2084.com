@@ -25,25 +25,30 @@ body{
   color:#cbd5e1;
   font-size:.85rem;
 }
+
 .gov-banner-inner{
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  max-width:1100px;
+  margin:0 auto;
+  padding:8px 18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .us-flag{
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  flex:0 0 auto;
+  line-height:0;
 }
 
-.us-flag img{
-  width: 22px;         
-  height: 14px;      
-  object-fit: cover;
-  display: block;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.18);
+.gov-banner .us-flag img{
+  width:18px;
+  height:12px;
+  display:block;
+  object-fit:cover;
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.18);
 }
 
 .gov-banner-text{ opacity:.95; }
