@@ -514,19 +514,4 @@ body{
   color:rgba(42,255,214,.95);
 }
 
-.tx-city text{
-  font-family: var(--mono);
-  font-size: 12px;
-  fill: rgba(215,227,238,.80);
-  letter-spacing: .6px;
-}
-
-.map-svg text{
-  fill: rgba(215,227,238,.72);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .8px;
-  dominant-baseline: middle;
-}
-
 .tx-dot{ fill:#b9c9d8; opacity:.95; }
