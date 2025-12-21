@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Silicon Prairie Network State • Austin Metro</title>
+  <meta name="description" content="Visit, move, and invest in the Silicon Prairie Network State (Austin Metro). Culture, capital, and continuity." />
+  <meta name="color-scheme" content="light" />
+  <link rel="stylesheet" href="./spns.css?v=1" />
+  <script defer src="./spns.js?v=1"></script>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="badge" aria-hidden="true">SPNS</div>
+      <div class="topbar-text">
+        <span class="kicker">Austin Metro</span>
+        <span class="sep" aria-hidden="true">•</span>
+        <span class="muted">A welcoming jurisdiction for builders, families, and compliant optimism.</span>
+      </div>
+
+      <div class="topbar-right">
+        <span class="pill" id="statusPill">OPEN FOR INVESTMENT</span>
+        <span class="micro" aria-label="Network time">NET TIME <b id="netTime">--:--</b></span>
+      </div>
+    </div>
+  </header>
+
+  <header class="mast" role="banner">
+    <div class="mast-inner">
+      <div class="brand">
+        <div class="brandmark" aria-hidden="true"></div>
+        <div class="brandtext">
+          <div class="name">Silicon Prairie Network State</div>
+          <div class="sub">City of Austin Metro Area • Tourism • Relocation • Capital Deployment</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#visit">Visit</a>
+        <a href="#move">Move</a>
+        <a href="#invest">Invest</a>
+        <a href="#districts">Districts</a>
+        <a href="#governance">Governance</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn ghost" href="#alerts">Advisories</a>
+        <a class="btn" href="#apply">Apply to Become a Citizen</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Bright days. Big deals. Better “stability.”</h1>
+          <p class="lede">
+            The Silicon Prairie Network State is the Austin Metro area’s premier destination for founders,
+            families, and funds seeking predictable policy, modern infrastructure, and a culture engineered for momentum.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn" href="#visit">Plan your visit</a>
+            <a class="btn secondary" href="#invest">Explore incentives</a>
+          </div>
+
+          <div class="stats" aria-label="Key metrics">
+            <div class="stat">
+              <div class="stat-top">
+                <span class="label">Civic Happiness Index</span>
+                <span class="hint">weekly</span>
+              </div>
+              <div class="value" id="happinessVal">92</div>
+              <div class="tiny muted">Methodology: proprietary, comforting.</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-top">
+                <span class="label">Average Wait Time for Permits</span>
+                <span class="hint">days</span>
+              </div>
+              <div class="value" id="permitsVal">4</div>
+              <div class="tiny muted">Fast when you’re “aligned.”</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-top">
+                <span class="label">Grid Confidence</span>
+                <span class="hint">30-day</span>
+              </div>
+              <div class="value"><span id="gridVal">99.4</span>%</div>
+              <div class="tiny muted">Powered by LoneGrid.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card" id="alerts" aria-label="Advisories">
+          <div class="card-head">
+            <div class="card-title">Official Advisories</div>
+            <div class="card-meta"><span class="dot ok" aria-hidden="true"></span><span class="muted">Live feed</span></div>
+          </div>
+
+          <div class="ticker" id="ticker" role="status" aria-live="polite"></div>
+
+          <div class="quicklinks">
+            <a class="q" href="https://newlife2084.com/lonegrid">Utility Status (LoneGrid)</a>
+            <a class="q" href="https://newlife2084.com/dode">Department of Digital Ethics (DoDE)</a>
+            <a class="q" href="https://newlife2084.com/rangers">Public Safety (Rangers)</a>
+          </div>
+
+          <div class="note">
+            <b>Reminder:</b> The city is safe. The dashboards said so.
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="section" id="visit">
+      <div class="section-head">
+        <h2>Visit</h2>
+        <p class="muted">Food, festivals, lakes, and a surprisingly efficient “welcome pipeline.”</p>
+      </div>
+
+      <div class="grid3">
+        <article class="tile">
+          <div class="tile-kicker">Weekend</div>
+          <h3>Downtown nights</h3>
+          <p>Live music, rooftop views, and friendly signage reminding you to keep conversations constructive.</p>
+          <a class="link" href="#districts">Browse districts</a>
+        </article>
+
+        <article class="tile">
+          <div class="tile-kicker">Outdoors</div>
+          <h3>Greenbelt + river corridor</h3>
+          <p>Trails, water, sun. Citizen morale refresh stations are placed throughout for your convenience.</p>
+          <a class="link" href="#map">See the map</a>
+        </article>
+
+        <article class="tile">
+          <div class="tile-kicker">Calendar</div>
+          <h3>“Innovation Week”</h3>
+          <p>Pitch nights, demos, and investor socials. Attendance boosts your Neighborhood Alignment Score (NAS).</p>
+          <a class="link" href="#invest">Incentives</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="move">
+      <div class="section-head">
+        <h2>Move</h2>
+        <p class="muted">A city site for relocation, with a totally normal onboarding flow.</p>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Relocation checklist</h3>
+          <ul class="list">
+            <li>Choose a district (vibe, commute, enforcement density).</li>
+            <li>Set up utilities with <a href="https://newlife2084.com/lonegrid">LoneGrid</a>.</li>
+            <li>Review community standards from <a href="https://newlife2084.com/dode">DoDE</a>.</li>
+            <li>Complete your “Welcome Interview” (friendly, brief, recorded).</li>
+          </ul>
+
+          <div class="callout" id="apply">
+            <div class="callout-title">Apply to Become a Citizen</div>
+            <div class="muted">Citizenship is open to founders, families, and “key contributors.”</div>
+
+            <form class="form" id="citizenForm" autocomplete="off">
+              <label>
+                Full name
+                <input name="name" placeholder="Your legal name" />
+              </label>
+              <label>
+                Primary interest
+                <select name="track">
+                  <option value="visit">Tourism / Visit</option>
+                  <option value="move">Relocation</option>
+                  <option value="invest">Investment</option>
+                  <option value="build">Build / Found a company</option>
+                </select>
+              </label>
+              <label>
+                Email
+                <input name="email" placeholder="you@domain.com" inputmode="email" />
+              </label>
+
+              <button class="btn" type="submit">Submit application</button>
+              <div class="tiny muted" id="applyNote">We respect privacy, within reason and policy.</div>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel sun">
+          <h3>Why people move here</h3>
+          <div class="chips" aria-label="Highlights">
+            <span class="chip">No winter</span>
+            <span class="chip">High-growth economy</span>
+            <span class="chip">Fast permits</span>
+            <span class="chip">Curated neighborhoods</span>
+            <span class="chip">Network time</span>
+            <span class="chip">Optimism-first culture</span>
+          </div>
+
+          <div class="quote">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <p>
+              “We came for the jobs. We stayed because the city kept telling us we were thriving.”
+            </p>
+            <div class="tiny muted">Anonymous resident (per policy)</div>
+          </div>
+
+          <div class="minirow">
+            <div class="mini">
+              <div class="mini-title">New Life Spire</div>
+              <div class="mini-body">Global HQ, skyline icon, and community anchor.</div>
+            </div>
+            <div class="mini">
+              <div class="mini-title">Rangers</div>
+              <div class="mini-body">Enforcement and asset protection. “Visible comfort.”</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="invest">
+      <div class="section-head">
+        <h2>Invest</h2>
+        <p class="muted">Tax packages, land deals, and “public-private harmony.”</p>
+      </div>
+
+      <div class="grid3">
+        <article class="tile soft">
+          <div class="tile-kicker">Incentives</div>
+          <h3>Founder Fast-Track</h3>
+          <p>Expedited approvals for companies aligned with civic stability, energy efficiency, and narrative cohesion.</p>
+          <a class="link" href="#governance">Policy overview</a>
+        </article>
+
+        <article class="tile soft">
+          <div class="tile-kicker">Real estate</div>
+          <h3>District leasing</h3>
+          <p>Commercial space near transit, the river corridor, and the New Life Spire campus zone.</p>
+          <a class="link" href="#districts">District profiles</a>
+        </article>
+
+        <article class="tile soft">
+          <div class="tile-kicker">Capital</div>
+          <h3>Continuity-backed ventures</h3>
+          <p>Risk is reduced through curated participation and proactive compliance alignment.</p>
+          <a class="link" href="#apply">Start a filing</a>
+        </article>
+      </div>
+
+      <div class="banner">
+        <div class="banner-left">
+          <div class="banner-title">Infrastructure you can count on</div>
+          <div class="muted">Utilities, oversight, and enforcement are integrated for “seamless citizen experience.”</div>
+        </div>
+        <div class="banner-right">
+          <a class="btn small" href="https://newlife2084.com/lonegrid">LoneGrid</a>
+          <a class="btn small secondary" href="https://newlife2084.com/dode">DoDE</a>
+          <a class="btn small ghost" href="https://newlife2084.com/rangers">Rangers</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="districts">
+      <div class="section-head">
+        <h2>Districts</h2>
+        <p class="muted">Austin Metro zones with distinct vibes and carefully-managed outcomes.</p>
+      </div>
+
+      <div class="grid4">
+        <article class="district">
+          <h3>Spire District</h3>
+          <p>Campus skyline, guided tours, flagship offices, protected sidewalks.</p>
+          <div class="tagrow">
+            <span class="tag">HQ access</span><span class="tag">Investor lounge</span><span class="tag">Clean sidewalks</span>
+          </div>
+        </article>
+
+        <article class="district">
+          <h3>River Corridor</h3>
+          <p>Parks, trails, patios, festivals, and abundant wellness signage.</p>
+          <div class="tagrow">
+            <span class="tag">Tourism</span><span class="tag">Outdoors</span><span class="tag">Events</span>
+          </div>
+        </article>
+
+        <article class="district">
+          <h3>Foundry North</h3>
+          <p>Studios, co-working, venture offices, optimism-forward cowork cafes.</p>
+          <div class="tagrow">
+            <span class="tag">Startups</span><span class="tag">R&amp;D</span><span class="tag">“Culture”</span>
+          </div>
+        </article>
+
+        <article class="district">
+          <h3>East Metro</h3>
+          <p>Logistics, utilities, training centers, and extremely friendly cameras.</p>
+          <div class="tagrow">
+            <span class="tag">Industry</span><span class="tag">Transit</span><span class="tag">Visibility</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="map">
+      <div class="section-head">
+        <h2>Metro Map</h2>
+        <p class="muted">Placeholder map layer. You’ll swap this with your remade version later.</p>
+      </div>
+
+      <div class="mapwrap" role="img" aria-label="Austin metro map with highlighted hubs">
+        <img class="mapimg" src="./austin_metro_map.png" alt="Austin metro placeholder map" />
+        <div class="pin austin" aria-hidden="true"></div>
+        <div class="pin north" aria-hidden="true"></div>
+        <div class="pin east" aria-hidden="true"></div>
+        <div class="pin south" aria-hidden="true"></div>
+        <div class="pin west" aria-hidden="true"></div>
+
+        <div class="maplegend" aria-hidden="true">
+          <div class="legendrow"><span class="dot ok"></span>Priority corridor</div>
+          <div class="legendrow"><span class="dot warn"></span>Growth zone</div>
+          <div class="legendrow"><span class="dot down"></span>“Managed” zone</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="governance">
+      <div class="section-head">
+        <h2>Governance</h2>
+        <p class="muted">Modern administration for a modern city. Everything is connected. For your convenience.</p>
+      </div>
+
+      <div class="grid3">
+        <article class="tile">
+          <div class="tile-kicker">Oversight</div>
+          <h3>Department of Digital Ethics</h3>
+          <p>Standards, audits, context handling, and the subtle art of defining “misinformation.”</p>
+          <a class="link" href="https://newlife2084.com/dode">Visit DoDE</a>
+        </article>
+
+        <article class="tile">
+          <div class="tile-kicker">Utilities</div>
+          <h3>LoneGrid Utility Authority</h3>
+          <p>Power, routing, and confidence. If the dashboard is green, it’s fine. That’s how physics works now.</p>
+          <a class="link" href="https://newlife2084.com/lonegrid">Visit LoneGrid</a>
+        </article>
+
+        <article class="tile">
+          <div class="tile-kicker">Public safety</div>
+          <h3>Rangers</h3>
+          <p>Enforcement, asset protection, and community stabilization through proactive interpretation.</p>
+          <a class="link" href="https://newlife2084.com/rangers">Visit Rangers</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="foot-left">
+        <div class="foot-title">Silicon Prairie Network State • Austin Metro</div>
+        <div class="foot-sub">
+          Rangers, DoDE, LoneGrid, and the Silicon Prairie Network State are fictional entities in
+          <a href="https://maroon-series.art">Mar00n</a>. Headquarters: New Life Spire.
+        </div>
+      </div>
+
+      <div class="foot-right">
+        <a class="footlink" href="https://newlife2084.com">New Life Technologies</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a class="footlink" href="#apply">Citizenship</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a class="footlink" href="#alerts">Advisories</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
