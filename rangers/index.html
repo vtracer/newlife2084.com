@@ -260,6 +260,22 @@
             display: block;
             text-transform: uppercase;
         }
+        
+        .subline{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spns-flag{
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
+  display: inline-block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(212,175,55,.25);
+  flex: 0 0 auto;
+}
     </style>
 </head>
 <body>
@@ -269,7 +285,10 @@
             <div class="ranger-star"></div>
             <div class="logo-text">
                 <h1>Silicon Prairie Rangers</h1>
-                <span><img src="../dode/spns_flag.png">Silicon Prairie Network State Certified Enforcement</span>
+<span class="subline">
+  <img class="spns-flag" src="../dode/spns_flag.png" alt="SPNS flag">
+  Silicon Prairie Network State Certified Enforcement
+</span>
             </div>
         </div>
         <div>
