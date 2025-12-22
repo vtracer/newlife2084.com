@@ -29,9 +29,9 @@ body[data-theme="corpo-xmas"]{
 }
 
 body {
-  background-color: var(--void-black);
-  color: var(--sterile-white);
-  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
   overflow-x: hidden;
   line-height: 1.6;
 }
