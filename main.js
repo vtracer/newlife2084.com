@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2. SOCIAL SHARE LOGIC ---
   // Pre-fills the text for the user to share
   const shareText =
-    "I have chosen the side of Continuity. My consciousness is ready for the Silicon Prairie. No pain. No fear. Ever again. @NewLifeTech #NewLife2084 #PerpetuityGuaranteed";
+    "I have chosen the side of Continuity. My consciousness is ready to outlive the flesh. No pain. No fear. Ever again. @newlife2084.com #NewLife2084 #maroonseries #PerpetuityGuaranteed";
   const encodedText = encodeURIComponent(shareText);
 
   // Twitter/X Share Link
