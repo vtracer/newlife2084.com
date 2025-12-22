@@ -141,9 +141,16 @@ h1, h2, h3 {
 /* --- DIVISIONS GRID --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* always 4 */
   gap: 30px;
   margin-top: 50px;
+}
+
+/* small screens: 1 column */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
