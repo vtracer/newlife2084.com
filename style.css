@@ -3,44 +3,54 @@
 ========================= */
 
 :root{
-  /* Base palette */
+  /* Core palette */
   --bg: #050505;
-  --bg-soft: #111;
+  --bg-soft: #0e0e0e;      /* deeper section background */
+  --surface-1: #0b0b0b;    /* hero/section glow base */
+  --surface-2: #121212;    /* panels / gradients */
   --text: #fcfcfc;
+  --text-soft: #ccc;
+  --text-dim: #666;
   --muted: #888;
 
   --panel: rgba(255,255,255,0.03);
   --border: rgba(255,255,255,0.10);
 
   --accent: #00f0ff;
-  --accent-rgb: 0,240,255; /* for rgba overlays */
+  --accent-rgb: 0,240,255;      /* for rgba overlays */
   --accent-2: #d4af37;
 
   /* Type */
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: 'Georgia', serif;
 
-  /* Compatibility aliases */
+  /* Compatibility aliases (so older rules don't explode) */
   --void-black: var(--bg);
   --sterile-white: var(--text);
   --chrome-silver: #e0e0e0;
   --gold-accent: var(--accent-2);
 }
 
-/* Christmas corpo theme: active when body[data-theme="corpo-xmas"] is set (JS does it) */
+/* Christmas corpo theme: active when body[data-theme="corpo-xmas"] is set */
 body[data-theme="corpo-xmas"]{
   --bg: #060606;
-  --bg-soft: #101010;
+  --bg-soft: #0d1110;
+  --surface-1: #090b0a;
+  --surface-2: #0f1412;
+
   --text: #fbfbfb;
+  --text-soft: #d7d7d7;
+  --text-dim: #8a8a8a;
   --muted: #b7b7b7;
 
   --panel: rgba(255,255,255,0.04);
   --border: rgba(255,255,255,0.12);
 
-  --accent: #1fbf7a;      /* evergreen-teal */
+  /* restrained green + gold, with optional “policy red” */
+  --accent: #1fbf7a;
   --accent-rgb: 31,191,122;
-  --accent-2: #d4af37;    /* gold stays */
-  --holiday-red: #b0122a; /* optional */
+  --accent-2: #d4af37;
+  --holiday-red: #b0122a;
 }
 
 *{
@@ -87,14 +97,20 @@ h1, h2, h3{
   padding: 0 20px;
 }
 
+/* JS-enhanced fade-in (won’t blank the page if JS fails) */
 .section{
   padding: 100px 0;
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.section.visible{
+body.js .section{
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body.js .section.visible{
   opacity: 1;
   transform: translateY(0);
 }
@@ -115,7 +131,7 @@ h1, h2, h3{
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+  background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 70%);
   position: relative;
   overflow: hidden;
 }
@@ -149,6 +165,10 @@ h1, h2, h3{
   hyphens: auto;
 }
 
+@media (max-width: 420px){
+  .hero h1{ letter-spacing: 0.06em; }
+}
+
 .hero p{
   font-size: clamp(1.1rem, 3.8vw, 1.5rem);
   color: var(--muted);
@@ -161,10 +181,6 @@ h1, h2, h3{
   text-transform: uppercase;
   letter-spacing: 0.1em;
   animation: pulse 3s infinite;
-}
-
-@media (max-width: 420px){
-  .hero h1{ letter-spacing: 0.06em; }
 }
 
 /* =========================
@@ -184,13 +200,13 @@ h1, h2, h3{
 
 .intro-lede{
   font-size: 1.2rem;
-  color: #ccc;
+  color: var(--text-soft);
 }
 
 .intro-attribution{
   margin-top: 20px;
   font-style: italic;
-  color: #666;
+  color: var(--text-dim);
 }
 
 /* =========================
@@ -228,8 +244,9 @@ h1, h2, h3{
 }
 
 .card p{
-  color: #aaa;
+  color: var(--text-soft);
   font-size: 0.95rem;
+  opacity: 0.85;
 }
 
 .card-icon{
@@ -263,7 +280,7 @@ h1, h2, h3{
 .split-text h2{ margin-bottom: 20px; }
 
 .split-text p{
-  color: #ccc;
+  color: var(--text-soft);
   margin-bottom: 20px;
 }
 
@@ -295,7 +312,7 @@ h1, h2, h3{
 
 .pledge-section{
   text-align: center;
-  background: radial-gradient(circle at center, #222 0%, #000 80%);
+  background: radial-gradient(circle at center, var(--surface-2) 0%, var(--bg) 80%);
 }
 
 .pledge-box{
@@ -305,6 +322,13 @@ h1, h2, h3{
   max-width: 800px;
   margin: 0 auto;
   position: relative;
+}
+
+/* subtle “holiday compliance glow” */
+body[data-theme="corpo-xmas"] .pledge-box{
+  box-shadow:
+    0 0 0 1px rgba(176,18,42,0.20),
+    0 0 30px rgba(31,191,122,0.08);
 }
 
 .pledge-box::before{
@@ -327,9 +351,10 @@ h1, h2, h3{
 
 .pledge-text{
   margin-bottom: 30px;
+  color: var(--text-soft);
 }
 
-/* Buttons: sane defaults */
+/* Buttons */
 .btn-group{
   display: flex;
   justify-content: center;
