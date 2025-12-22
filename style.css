@@ -128,10 +128,8 @@ h1, h2, h3 {
   word-break: normal;
   hyphens: auto;
   
-  font-size: 4rem;
   margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
 }
 
 /* extra-tight phones */
