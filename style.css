@@ -520,12 +520,39 @@ footer{
 }
 
 /* ---------- Example: Title lights (only if JS mounts them) ---------- */
+/* Lights wrapper */
 .decor-lights{
   position: absolute;
   left: -8%;
   right: -8%;
-  top: -34px;
+  top: -40px;
+  height: 56px;         /* room for sag + bulbs */
+  pointer-events: none;
+}
+
+/* The wire itself (SVG background) */
+.decor-wire{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
   height: 32px;
+  background: var(--wire-bg) center/100% 100% no-repeat;
+}
+
+/* Bulbs now use --y from JS */
+.decor-bulb{
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 12px;
+  transform: translate(-50%, var(--y, 14px));
+  border-radius: 50% 50% 45% 45%;
+  background: var(--c, #fff);
+  opacity: 0.85;
+  box-shadow: 0 0 10px rgba(255,255,255,0.35);
+  animation: bulbBlink var(--dur, 2.2s) infinite;
+  animation-delay: var(--delay, 0s);
 }
 
 .decor-lights::before{
@@ -540,19 +567,6 @@ footer{
 </svg>") center/100% 100% no-repeat;
 }
 
-.decor-bulb{
-  position:absolute;
-  top:14px;
-  width:10px;
-  height:12px;
-  transform: translateX(-50%);
-  border-radius: 50% 50% 45% 45%;
-  background: var(--c, #fff);
-  opacity: 0.85;
-  box-shadow: 0 0 10px rgba(255,255,255,0.35);
-  animation: bulbBlink var(--dur, 2.2s) infinite;
-  animation-delay: var(--delay, 0s);
-}
 
 .decor-bulb::after{
   content:"";
