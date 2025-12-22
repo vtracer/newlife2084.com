@@ -183,7 +183,7 @@ function initFallingSpurs() {
 document.addEventListener("DOMContentLoaded", () => {
   // 1) Theme first
   applySeasonalTheme();
-
+	initDecorationsForTheme();
   // 2) Spurs (only if theme is Xmas)
   initFallingSpurs();
 
