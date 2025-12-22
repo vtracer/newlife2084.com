@@ -1,7 +1,37 @@
+function pickThemeForToday() {
+  const now = new Date();
+  const y = now.getFullYear();
+
+  const inRange = (start, end) => now >= start && now < end;
+
+  const THEMES = [
+    {
+      name: "corpo-xmas",
+      start: new Date(y, 11, 1),     // Dec 1
+      end:   new Date(y + 1, 0, 1),  // Jan 1
+      decorations: ["titleLights", "spurSnow"] // <- NOT always lights, just whatever you want
+    },
+    {
+      name: "corpo-halloween",
+      start: new Date(y, 9, 1),      // Oct 1
+      end:   new Date(y, 10, 1),     // Nov 1
+      decorations: ["titleGarland"]  // placeholder example
+    },
+    { name: "", start: new Date(y, 0, 1), end: new Date(y + 1, 0, 1), decorations: [] }
+  ];
+
+  // Manual override for testing: ?theme=corpo-xmas
+  const urlTheme = new URLSearchParams(location.search).get("theme");
+  if (urlTheme) return THEMES.find(t => t.name === urlTheme) || { name: urlTheme, decorations: [] };
+
+  return THEMES.find(t => t.name && inRange(t.start, t.end)) || THEMES[THEMES.length - 1];
+}
+
 function applySeasonalTheme() {
-  const month = new Date().getMonth(); // 0=Jan ... 11=Dec
-  if (month === 11) document.body.setAttribute("data-theme", "corpo-xmas");
+  const picked = pickThemeForToday();
+  if (picked.name) document.body.setAttribute("data-theme", picked.name);
   else document.body.removeAttribute("data-theme");
+  window.__DECOR__ = picked;
 }
 
 function initFallingSpurs() {
