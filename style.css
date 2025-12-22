@@ -28,9 +28,12 @@ body[data-theme="corpo-xmas"]{
   box-sizing: border-box;
 }
 
-body{
-  background-color: var(--bg);
-  color: var(--text);
+body {
+  background-color: var(--void-black);
+  color: var(--sterile-white);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 /* --- TYPOGRAPHY --- */
@@ -138,7 +141,7 @@ h1, h2, h3 {
 
 .hero-tagline {
   font-size: 1.2rem;
-  color: var(--biolum-blue);
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   animation: pulse 3s infinite;
@@ -182,17 +185,14 @@ h1, h2, h3 {
   }
 }
 
-.card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  padding: 40px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+.card{
+  background: var(--panel);
+  border: 1px solid var(--border);
 }
 
-.card:hover {
+.card:hover{
   transform: translateY(-5px);
-  border-color: var(--biolum-blue);
+  border-color: var(--accent);
 }
 
 .card h3 {
@@ -274,7 +274,7 @@ h1, h2, h3 {
 
 .pledge-box {
   background: rgba(0,0,0,0.8);
-  border: 1px solid var(--gold-accent);
+  border: 1px solid var(--accent-2);
   padding: 60px;
   max-width: 800px;
   margin: 0 auto;
@@ -315,7 +315,8 @@ h1, h2, h3 {
   padding: 15px 30px;
   border: 1px solid var(--sterile-white);
   background: transparent;
-  color: var(--sterile-white);
+  border-color: var(--accent-2);
+  color: var(--accent-2);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
@@ -331,6 +332,7 @@ h1, h2, h3 {
 }
 
 .btn-gold {
+  background: var(--accent-2);
   border-color: var(--gold-accent);
   color: var(--gold-accent);
 }
@@ -386,4 +388,11 @@ footer {
   0% { opacity: 0.6; }
   50% { opacity: 1; }
   100% { opacity: 0.6; }
+}
+
+body[data-theme="corpo-xmas"] .hero p{
+  color: var(--muted);
+}
+body[data-theme="corpo-xmas"] .pledge-box::before{
+  color: var(--accent-2);
 }
