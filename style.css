@@ -1,14 +1,25 @@
-/* --- CSS RESET & VARIABLES --- */
-:root {
-  --void-black: #050505;
-  --sterile-white: #fcfcfc;
-  --chrome-silver: #e0e0e0;
-  --biolum-blue: #00f0ff;
-  --gold-accent: #d4af37;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'Georgia', serif;
+:root{
+  /* base palette (default) */
+  --bg: #050505;
+  --text: #fcfcfc;
+  --muted: #888;
+  --panel: rgba(255,255,255,0.03);
+  --border: rgba(255,255,255,0.10);
+
+  --accent: #00f0ff;     /* default: biolum-blue */
+  --accent-2: #d4af37;   /* default: gold */
+}
+
+/* Christmas corpo theme */
+body[data-theme="corpo-xmas"]{
+  --bg: #060606;                 /* keep it dark */
+  --text: #fbfbfb;
+  --muted: #b7b7b7;
+
+  /* “corporate Christmas”: restrained green + deep red + gold */
+  --accent: #1fbf7a;            /* evergreen-teal */
+  --accent-2: #d4af37;          /* gold stays */
+  --holiday-red: #b0122a;       /* used selectively */
 }
 
 * {
