@@ -27,6 +27,101 @@ function pickThemeForToday() {
   return THEMES.find(t => t.name && inRange(t.start, t.end)) || THEMES[THEMES.length - 1];
 }
 
+function clearDecorations() {
+  const layer = document.getElementById("decor-layer");
+  if (layer) layer.innerHTML = "";
+  document.querySelectorAll(".decor-slot").forEach(s => (s.innerHTML = ""));
+}
+
+const Decorations = {
+  titleLights() {
+    const slot = document.querySelector(".decor-slot--title");
+    if (!slot) return;
+
+    const wrap = document.createElement("div");
+    wrap.className = "decor-lights";
+
+    const colors = ["#d4af37", "#1fbf7a", "#b0122a", "#ffffff"]; // corpo-xmas
+    const bulbs = 18;
+
+    for (let i = 0; i < bulbs; i++) {
+      const b = document.createElement("span");
+      b.className = "decor-bulb";
+      b.style.left = `${(i / (bulbs - 1)) * 100}%`;
+      b.style.setProperty("--c", colors[i % colors.length]);
+      b.style.setProperty("--delay", `${Math.random() * 1.8}s`);
+      b.style.setProperty("--dur", `${1.6 + Math.random() * 1.8}s`);
+      wrap.appendChild(b);
+    }
+
+    slot.appendChild(wrap);
+  },
+
+  spurSnow() {
+    const layer = document.getElementById("decor-layer");
+    if (!layer) return;
+
+    const svg = `data:image/svg+xml,${encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+          <path d="M32 8v12"/><path d="M32 44v12"/>
+          <path d="M8 32h12"/><path d="M44 32h12"/>
+          <path d="M15 15l8 8"/><path d="M41 41l8 8"/>
+          <path d="M49 15l-8 8"/><path d="M23 41l-8 8"/>
+          <path d="M32 24l4 8-4 8-4-8z"/>
+        </g>
+      </svg>
+    `)}`;
+
+    const count = 24;
+
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement("div");
+      el.className = "spurflake";
+
+      const size = 12 + Math.random() * 18;
+      const x = Math.random() * 100;
+      const o = 0.25 + Math.random() * 0.65;
+      const d = 8 + Math.random() * 10;
+      const d2 = 2.8 + Math.random() * 3.5;
+      const d3 = 4 + Math.random() * 8;
+      const drift = (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 35);
+      const delay = Math.random() * 10;
+
+      el.style.setProperty("--img", `url("${svg}")`);
+      el.style.setProperty("--s", `${size}px`);
+      el.style.setProperty("--x", `${x}vw`);
+      el.style.setProperty("--o", `${o}`);
+      el.style.setProperty("--d", `${d}s`);
+      el.style.setProperty("--d2", `${d2}s`);
+      el.style.setProperty("--d3", `${d3}s`);
+      el.style.setProperty("--drift", `${drift}px`);
+      el.style.setProperty("--delay", `-${delay}s`);
+
+      layer.appendChild(el);
+    }
+  },
+
+  // Placeholder: easy to add later
+  titleGarland() {
+    const slot = document.querySelector(".decor-slot--title");
+    if (!slot) return;
+    slot.innerHTML = `<div style="position:absolute;left:-8%;right:-8%;top:-34px;height:32px;opacity:.55;color:var(--accent);font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:center;">
+      SEASONAL COMPLIANCE DECOR PENDING
+    </div>`;
+  }
+};
+
+function initDecorationsForTheme() {
+  clearDecorations();
+  const picked = window.__DECOR__;
+  if (!picked?.decorations?.length) return;
+
+  picked.decorations.forEach(key => {
+    if (typeof Decorations[key] === "function") Decorations[key]();
+  });
+}
+
 function applySeasonalTheme() {
   const picked = pickThemeForToday();
   if (picked.name) document.body.setAttribute("data-theme", picked.name);
