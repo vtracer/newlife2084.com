@@ -212,14 +212,22 @@ h1, h2, h3 {
   flex: 1;
   min-width: 300px;
   height: 400px;
-  background: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"><rect width="100%25" height="100%25" fill="%23111"/><path d="M0 400 L400 0" stroke="%23333" stroke-width="1"/></svg>');
+
+  /* stripped map background */
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border: 1px solid #333;
+
   display: flex;
   align-items: center;
   justify-content: center;
   color: #444;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.visual-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 /* --- PLEDGE SECTION (INTERACTIVE) --- */
