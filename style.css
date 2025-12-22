@@ -28,12 +28,9 @@ body[data-theme="corpo-xmas"]{
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--void-black);
-  color: var(--sterile-white);
-  font-family: var(--font-main);
-  overflow-x: hidden;
-  line-height: 1.6;
+body{
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 /* --- TYPOGRAPHY --- */
