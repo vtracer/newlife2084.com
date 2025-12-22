@@ -1,3 +1,56 @@
+function initFallingSpurs() {
+  // Only run when the Christmas theme is active
+  if (document.body.getAttribute("data-theme") !== "corpo-xmas") return;
+
+  const wrap = document.getElementById("falling-spurs");
+  if (!wrap) return;
+
+  // prevent duplicates if the page hot-reloads
+  wrap.innerHTML = "";
+
+  // Spurflake: reads as “snowflake” but feels like a weaponized ornament
+  const svg = `data:image/svg+xml,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+      <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+        <path d="M32 8v12"/><path d="M32 44v12"/>
+        <path d="M8 32h12"/><path d="M44 32h12"/>
+        <path d="M15 15l8 8"/><path d="M41 41l8 8"/>
+        <path d="M49 15l-8 8"/><path d="M23 41l-8 8"/>
+        <path d="M32 24l4 8-4 8-4-8z"/>
+      </g>
+    </svg>
+  `)}`;
+
+  // density control
+  const count = 24; // 16–36 is usually fine
+
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement("div");
+    el.className = "spurflake";
+
+    const size = 12 + Math.random() * 18;                 // 12–30px
+    const x = Math.random() * 100;                        // vw
+    const o = 0.25 + Math.random() * 0.65;                // opacity
+    const d = 8 + Math.random() * 10;                     // fall duration
+    const d2 = 2.8 + Math.random() * 3.5;                 // drift duration
+    const d3 = 4 + Math.random() * 8;                     // spin duration
+    const drift = (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 35);
+    const delay = Math.random() * 10;
+
+    el.style.setProperty("--img", `url("${svg}")`);
+    el.style.setProperty("--s", `${size}px`);
+    el.style.setProperty("--x", `${x}vw`);
+    el.style.setProperty("--o", `${o}`);
+    el.style.setProperty("--d", `${d}s`);
+    el.style.setProperty("--d2", `${d2}s`);
+    el.style.setProperty("--d3", `${d3}s`);
+    el.style.setProperty("--drift", `${drift}px`);
+    el.style.setProperty("--delay", `-${delay}s`); // negative = staggered start
+
+    wrap.appendChild(el);
+  }
+}
+
 function applySeasonalTheme() {
   const now = new Date();
   const month = now.getMonth(); // 0=Jan ... 11=Dec
