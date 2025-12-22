@@ -229,6 +229,77 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   document.querySelectorAll(".section").forEach(section => observer.observe(section));
+  
+  async function loadBlueskyFeed(handle = "newlife2084.com", limit = 6) {
+  const statusEl = document.getElementById("signal-status");
+  const feedEl = document.getElementById("bsky-feed");
+  if (!feedEl) return;
+
+  const setStatus = (msg) => { if (statusEl) statusEl.textContent = msg; };
+
+  try {
+    setStatus("Link established. Decrypting…");
+
+    // 1) Resolve handle -> profile (gives us DID + canonical handle)
+    const profRes = await fetch(
+      `https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=${encodeURIComponent(handle)}`
+    );
+    if (!profRes.ok) throw new Error("Profile fetch failed");
+    const profile = await profRes.json();
+
+    // 2) Get author feed (use DID if available)
+    const actor = profile.did || profile.handle || handle;
+    const feedRes = await fetch(
+      `https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=${encodeURIComponent(actor)}&limit=${limit}`
+    );
+    if (!feedRes.ok) throw new Error("Feed fetch failed");
+    const data = await feedRes.json();
+
+    const items = (data.feed || []).map(x => x.post).filter(Boolean);
+
+    feedEl.innerHTML = "";
+
+    for (const post of items) {
+      const text = post.record?.text || "";
+      const createdAt = post.record?.createdAt ? new Date(post.record.createdAt) : null;
+
+      // at://did/app.bsky.feed.post/<rkey> -> https://bsky.app/profile/<handle>/post/<rkey>
+      const uri = post.uri || "";
+      const rkey = uri.split("/").pop();
+      const postUrl = `https://bsky.app/profile/${profile.handle}/post/${rkey}`; // common web view pattern  [oai_citation:2‡GitHub](https://github.com/bluesky-social/atproto/discussions/2523?utm_source=chatgpt.com)
+
+      const card = document.createElement("div");
+      card.className = "signal-post";
+      card.innerHTML = `
+        <div class="signal-text">${escapeHtml(truncate(text, 280))}</div>
+        <div class="signal-foot">
+          <span>${createdAt ? createdAt.toLocaleString() : ""}</span>
+          <a class="signal-link" href="${postUrl}" target="_blank" rel="noopener">View on Bluesky</a>
+        </div>
+      `;
+      feedEl.appendChild(card);
+    }
+
+    setStatus(`Live from @${profile.handle} • last ${Math.min(limit, items.length)} posts`);
+  } catch (err) {
+    setStatus("Signal lost. Try again later.");
+    feedEl.innerHTML = `<div class="signal-post"><div class="signal-text">No transmissions available.</div></div>`;
+    console.error(err);
+  }
+}
+
+function truncate(s, n) {
+  return s.length > n ? s.slice(0, n - 1) + "…" : s;
+}
+
+function escapeHtml(str) {
+  return str
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
   // 4) Social share links
   const shareText =
