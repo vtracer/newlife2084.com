@@ -1,3 +1,9 @@
+function applySeasonalTheme() {
+  const month = new Date().getMonth(); // 0=Jan ... 11=Dec
+  if (month === 11) document.body.setAttribute("data-theme", "corpo-xmas");
+  else document.body.removeAttribute("data-theme");
+}
+
 function initFallingSpurs() {
   // Only run when the Christmas theme is active
   if (document.body.getAttribute("data-theme") !== "corpo-xmas") return;
@@ -5,10 +11,9 @@ function initFallingSpurs() {
   const wrap = document.getElementById("falling-spurs");
   if (!wrap) return;
 
-  // prevent duplicates if the page hot-reloads
+  // Prevent duplicates if the page hot-reloads
   wrap.innerHTML = "";
 
-  // Spurflake: reads as “snowflake” but feels like a weaponized ornament
   const svg = `data:image/svg+xml,${encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
       <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
@@ -21,19 +26,18 @@ function initFallingSpurs() {
     </svg>
   `)}`;
 
-  // density control
-  const count = 24; // 16–36 is usually fine
+  const count = 24;
 
   for (let i = 0; i < count; i++) {
     const el = document.createElement("div");
     el.className = "spurflake";
 
-    const size = 12 + Math.random() * 18;                 // 12–30px
-    const x = Math.random() * 100;                        // vw
-    const o = 0.25 + Math.random() * 0.65;                // opacity
-    const d = 8 + Math.random() * 10;                     // fall duration
-    const d2 = 2.8 + Math.random() * 3.5;                 // drift duration
-    const d3 = 4 + Math.random() * 8;                     // spin duration
+    const size = 12 + Math.random() * 18; // 12–30px
+    const x = Math.random() * 100;        // vw
+    const o = 0.25 + Math.random() * 0.65;
+    const d = 8 + Math.random() * 10;
+    const d2 = 2.8 + Math.random() * 3.5;
+    const d3 = 4 + Math.random() * 8;
     const drift = (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 35);
     const delay = Math.random() * 10;
 
@@ -45,21 +49,9 @@ function initFallingSpurs() {
     el.style.setProperty("--d2", `${d2}s`);
     el.style.setProperty("--d3", `${d3}s`);
     el.style.setProperty("--drift", `${drift}px`);
-    el.style.setProperty("--delay", `-${delay}s`); // negative = staggered start
+    el.style.setProperty("--delay", `-${delay}s`);
 
     wrap.appendChild(el);
-  }
-}
-
-function applySeasonalTheme() {
-  const now = new Date();
-  const month = now.getMonth(); // 0=Jan ... 11=Dec
-
-  // All December
-  if (month === 11) {
-    document.body.setAttribute("data-theme", "corpo-xmas");
-  } else {
-    document.body.removeAttribute("data-theme");
   }
 }
 
@@ -67,9 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1) Theme first
   applySeasonalTheme();
 
-// --- 1. SCROLL ANIMATIONS ---
-// Uses Intersection Observer to fade in sections as the user scrolls
-document.addEventListener('DOMContentLoaded', () => {
+  // 2) Spurs (only if theme is Xmas)
+  initFallingSpurs();
+
+  // 3) Scroll animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px"
@@ -77,32 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add("visible");
     });
   }, observerOptions);
 
-  document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
-  });
+  document.querySelectorAll(".section").forEach(section => observer.observe(section));
 
-  // --- 2. SOCIAL SHARE LOGIC ---
-  // Pre-fills the text for the user to share
+  // 4) Social share links
   const shareText =
     "I have chosen the side of Continuity. My consciousness is ready to outlive the flesh. No pain. No fear. Ever again. @newlife2084.com #NewLife2084 #maroonseries #PerpetuityGuaranteed";
   const encodedText = encodeURIComponent(shareText);
 
-  // Twitter/X Share Link
-  const twitterBtn = document.getElementById('share-twitter');
-  if (twitterBtn) {
-    twitterBtn.href = `https://twitter.com/intent/tweet?text=${encodedText}`;
-  }
+  const twitterBtn = document.getElementById("share-twitter");
+  if (twitterBtn) twitterBtn.href = `https://twitter.com/intent/tweet?text=${encodedText}`;
 
-  // Bluesky Share Link
-  const bskyBtn = document.getElementById('share-bsky');
-  if (bskyBtn) {
-    bskyBtn.href = `https://bsky.app/intent/compose?text=${encodedText}`;
-  }
+  const bskyBtn = document.getElementById("share-bsky");
+  if (bskyBtn) bskyBtn.href = `https://bsky.app/intent/compose?text=${encodedText}`;
 });
-
