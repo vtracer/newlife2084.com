@@ -216,6 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2) Spurs (only if theme is Xmas)
   initFallingSpurs();
 
+	loadBlueskyFeed("newlife2084.com", 6);
+  setInterval(() => loadBlueskyFeed("newlife2084.com", 6), 5 * 60 * 1000);
+
   // 3) Scroll animations
   const observerOptions = {
     threshold: 0.1,
