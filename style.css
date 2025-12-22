@@ -621,3 +621,85 @@ footer{
   object-fit: contain;   /* never stretch */
   display: block;
 }
+
+.live-signal .signal-head{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.signal-meta{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.signal-dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35);
+  opacity: 0.85;
+}
+
+.signal-follow{
+  color: var(--accent-2);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.02);
+}
+
+.signal-follow:hover{
+  border-color: var(--accent);
+}
+
+.signal-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 900px){
+  .signal-grid{ grid-template-columns: 1fr; }
+}
+
+.signal-post{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.signal-post:hover{
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.signal-text{
+  color: var(--text-soft);
+  white-space: pre-wrap;
+}
+
+.signal-foot{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  margin-top: 12px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.signal-link{
+  color: var(--accent-2);
+  text-decoration:none;
+}
+
+.signal-link:hover{ text-decoration: underline; }
