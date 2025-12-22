@@ -606,3 +606,18 @@ footer{
 @keyframes spurFall{ to { transform: translate3d(var(--x, 50vw), 112vh, 0); } }
 @keyframes spurDrift{ 0%,100%{ margin-left:0 } 50%{ margin-left: var(--drift, 24px); } }
 @keyframes spurSpin{ to { rotate: 360deg; } }
+
+.card-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;          /* consistent icon row height */
+  margin-bottom: 20px;
+}
+
+.card-logo{
+  width: 32px;           /* set your “small” target */
+  height: 32px;
+  object-fit: contain;   /* never stretch */
+  display: block;
+}
