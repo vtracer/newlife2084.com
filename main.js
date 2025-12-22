@@ -35,27 +35,56 @@ function clearDecorations() {
 
 const Decorations = {
   titleLights() {
-    const slot = document.querySelector(".decor-slot--title");
-    if (!slot) return;
+  const slot = document.querySelector(".decor-slot--title");
+  if (!slot) return;
 
-    const wrap = document.createElement("div");
-    wrap.className = "decor-lights";
+  const wrap = document.createElement("div");
+  wrap.className = "decor-lights";
 
-    const colors = ["#d4af37", "#1fbf7a", "#b0122a", "#ffffff"]; // corpo-xmas
-    const bulbs = 18;
+  // ---- wire + sag settings ----
+  const baseY = 14;   // where the wire starts (px)
+  const sag = 12;     // slack amount (px). Increase for more droop.
 
-    for (let i = 0; i < bulbs; i++) {
-      const b = document.createElement("span");
-      b.className = "decor-bulb";
-      b.style.left = `${(i / (bulbs - 1)) * 100}%`;
-      b.style.setProperty("--c", colors[i % colors.length]);
-      b.style.setProperty("--delay", `${Math.random() * 1.8}s`);
-      b.style.setProperty("--dur", `${1.6 + Math.random() * 1.8}s`);
-      wrap.appendChild(b);
-    }
+  // Build a sagging wire as SVG so it scales cleanly
+  const wireSvg = `data:image/svg+xml,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 32" preserveAspectRatio="none">
+      <path d="M0 ${baseY} C 25 ${baseY + sag}, 75 ${baseY + sag}, 100 ${baseY}"
+            fill="none" stroke="white" stroke-opacity="0.22" stroke-width="2"/>
+    </svg>
+  `)}`;
 
-    slot.appendChild(wrap);
-  },
+  const wire = document.createElement("div");
+  wire.className = "decor-wire";
+  wire.style.setProperty("--wire-bg", `url("${wireSvg}")`);
+  // Make the wire element actually use the variable
+  wire.style.backgroundImage = `url("${wireSvg}")`;
+
+  wrap.appendChild(wire);
+
+  // ---- bulbs ----
+  const colors = ["#d4af37", "#1fbf7a", "#b0122a", "#ffffff"]; // corpo-xmas
+  const bulbs = 18;
+
+  for (let i = 0; i < bulbs; i++) {
+    const t = bulbs === 1 ? 0.5 : i / (bulbs - 1); // 0..1 across the line
+
+    // Match the same "droop" shape as the wire.
+    // Sin curve reads very natural: 0 at ends, max in middle.
+    const y = baseY + sag * Math.sin(Math.PI * t);
+
+    const b = document.createElement("span");
+    b.className = "decor-bulb";
+    b.style.left = `${t * 100}%`;
+    b.style.setProperty("--c", colors[i % colors.length]);
+    b.style.setProperty("--y", `${y}px`);
+    b.style.setProperty("--delay", `${Math.random() * 1.8}s`);
+    b.style.setProperty("--dur", `${1.6 + Math.random() * 1.8}s`);
+
+    wrap.appendChild(b);
+  }
+
+  slot.appendChild(wrap);
+},
 
   spurSnow() {
     const layer = document.getElementById("decor-layer");
