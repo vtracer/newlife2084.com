@@ -494,3 +494,98 @@ footer{
 @media (prefers-reduced-motion: reduce){
   #falling-spurs{ display: none; }
 }
+
+/* Generic decoration layer */
+#decor-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.decor-slot{
+  pointer-events: none;
+}
+
+.nlt-title-wrap{
+  position: relative;
+  display: inline-block;
+}
+
+/* Reduced motion: kill animated decorations */
+@media (prefers-reduced-motion: reduce){
+  #decor-layer{ display:none !important; }
+  .decor-slot{ display:none !important; }
+}
+
+/* ---------- Example: Title lights (only if JS mounts them) ---------- */
+.decor-lights{
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  top: -34px;
+  height: 32px;
+}
+
+.decor-lights::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:16px;
+  border-top: 2px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+}
+
+.decor-bulb{
+  position:absolute;
+  top:10px;
+  width:10px;
+  height:12px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 45% 45%;
+  background: var(--c, #fff);
+  opacity: 0.85;
+  box-shadow: 0 0 10px rgba(255,255,255,0.35);
+  animation: bulbBlink var(--dur, 2.2s) infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.decor-bulb::after{
+  content:"";
+  position:absolute;
+  top:-4px;
+  left:50%;
+  width:8px;
+  height:5px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+@keyframes bulbBlink{
+  0%,100%{ opacity:0.55; filter: brightness(0.85); }
+  50%{ opacity:1; filter: brightness(1.45); }
+}
+
+/* ---------- Example: Falling spurflakes (page overlay) ---------- */
+.spurflake{
+  position:absolute;
+  top:-12vh;
+  left:0;
+  width: var(--s, 18px);
+  height: var(--s, 18px);
+  opacity: var(--o, 0.75);
+  background: var(--img) center/contain no-repeat;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.18));
+  transform: translate3d(var(--x, 50vw), -12vh, 0);
+  animation:
+    spurFall var(--d, 10s) linear var(--delay, 0s) infinite,
+    spurDrift var(--d2, 4s) ease-in-out var(--delay, 0s) infinite,
+    spurSpin var(--d3, 6s) linear var(--delay, 0s) infinite;
+}
+
+@keyframes spurFall{ to { transform: translate3d(var(--x, 50vw), 112vh, 0); } }
+@keyframes spurDrift{ 0%,100%{ margin-left:0 } 50%{ margin-left: var(--drift, 24px); } }
+@keyframes spurSpin{ to { rotate: 360deg; } }
