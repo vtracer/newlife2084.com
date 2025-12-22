@@ -1,3 +1,19 @@
+function applySeasonalTheme() {
+  const now = new Date();
+  const month = now.getMonth(); // 0=Jan ... 11=Dec
+
+  // All December
+  if (month === 11) {
+    document.body.setAttribute("data-theme", "corpo-xmas");
+  } else {
+    document.body.removeAttribute("data-theme");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) Theme first
+  applySeasonalTheme();
+
 // --- 1. SCROLL ANIMATIONS ---
 // Uses Intersection Observer to fade in sections as the user scrolls
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,3 +52,4 @@ document.addEventListener('DOMContentLoaded', () => {
     bskyBtn.href = `https://bsky.app/intent/compose?text=${encodedText}`;
   }
 });
+
