@@ -1,42 +1,55 @@
+/* =========================
+   RESET + THEME VARIABLES
+========================= */
+
 :root{
-  /* base palette (default) */
+  /* Base palette */
   --bg: #050505;
+  --bg-soft: #111;
   --text: #fcfcfc;
   --muted: #888;
+
   --panel: rgba(255,255,255,0.03);
   --border: rgba(255,255,255,0.10);
-  
+
+  --accent: #00f0ff;
+  --accent-rgb: 0,240,255; /* for rgba overlays */
+  --accent-2: #d4af37;
+
+  /* Type */
+  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Georgia', serif;
+
+  /* Compatibility aliases */
   --void-black: var(--bg);
   --sterile-white: var(--text);
   --chrome-silver: #e0e0e0;
   --gold-accent: var(--accent-2);
-
-  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'Georgia', serif;
-
-  --accent: #00f0ff;     /* default: biolum-blue */
-  --accent-2: #d4af37;   /* default: gold */
 }
 
-/* Christmas corpo theme */
+/* Christmas corpo theme: active when body[data-theme="corpo-xmas"] is set (JS does it) */
 body[data-theme="corpo-xmas"]{
-  --bg: #060606;                 /* keep it dark */
+  --bg: #060606;
+  --bg-soft: #101010;
   --text: #fbfbfb;
   --muted: #b7b7b7;
 
-  /* “corporate Christmas”: restrained green + deep red + gold */
-  --accent: #1fbf7a;            /* evergreen-teal */
-  --accent-2: #d4af37;          /* gold stays */
-  --holiday-red: #b0122a;       /* used selectively */
+  --panel: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.12);
+
+  --accent: #1fbf7a;      /* evergreen-teal */
+  --accent-rgb: 31,191,122;
+  --accent-2: #d4af37;    /* gold stays */
+  --holiday-red: #b0122a; /* optional */
 }
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+body{
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-main, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
@@ -44,49 +57,58 @@ body {
   line-height: 1.6;
 }
 
-/* --- TYPOGRAPHY --- */
-h1, h2, h3 {
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1, h2, h3{
   font-weight: 300;
   letter-spacing: -0.02em;
 }
 
-.serif {
+.serif{
   font-family: var(--font-serif);
   font-style: italic;
 }
 
-.gradient-text {
+.gradient-text{
   background: linear-gradient(90deg, #fff, #999);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* --- LAYOUT UTILITIES --- */
-.container {
+/* =========================
+   LAYOUT UTILITIES
+========================= */
+
+.container{
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.section {
+.section{
   padding: 100px 0;
-  opacity: 0; /* For scroll animation */
+  opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.section.visible {
+.section.visible{
   opacity: 1;
   transform: translateY(0);
 }
 
-.section-title {
+.section-title{
   text-align: center;
   margin-bottom: 50px;
 }
 
-/* --- HERO SECTION --- */
-.hero {
+/* =========================
+   HERO
+========================= */
+
+.hero{
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -98,102 +120,100 @@ h1, h2, h3 {
   overflow: hidden;
 }
 
-.hero::before {
+.hero::before{
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background:
-    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(var(--accent-rgb), 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.035) 1px, transparent 1px);
   background-size: 50px 50px;
   z-index: 0;
 }
 
 .hero-content{
+  z-index: 2;
   max-width: min(980px, 92vw);
   padding: 0 14px;
 }
 
 .hero h1{
-  /* responsive size instead of a fixed 4rem */
   font-size: clamp(2.0rem, 7vw, 4rem);
   line-height: 1.05;
-
-  /* letter-spacing that shrinks on small screens */
   letter-spacing: clamp(0.06em, 1.2vw, 0.2em);
+  text-transform: uppercase;
+  margin-bottom: 20px;
 
-  /* allow wrapping safely */
   text-wrap: balance;
   overflow-wrap: anywhere;
-  word-break: normal;
   hyphens: auto;
-  
-  margin-bottom: 20px;
-  text-transform: uppercase;
 }
 
-/* extra-tight phones */
-@media (max-width: 420px){
-  .hero h1{
-    letter-spacing: 0.06em;
-  }
-}
-
-.hero p {
-  font-size: 1.5rem;
-  color: #888;
+.hero p{
+  font-size: clamp(1.1rem, 3.8vw, 1.5rem);
+  color: var(--muted);
   margin-bottom: 40px;
 }
 
-.hero-tagline {
-  font-size: 1.2rem;
+.hero-tagline{
+  font-size: 1.05rem;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   animation: pulse 3s infinite;
 }
 
-/* --- INTRO COPY --- */
-.centered-copy {
+@media (max-width: 420px){
+  .hero h1{ letter-spacing: 0.06em; }
+}
+
+/* =========================
+   INTRO COPY
+========================= */
+
+.centered-copy{
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
 }
 
-.intro-title {
-  font-size: 2.5rem;
+.intro-title{
+  font-size: clamp(1.8rem, 4.5vw, 2.5rem);
   margin-bottom: 30px;
 }
 
-.intro-lede {
+.intro-lede{
   font-size: 1.2rem;
   color: #ccc;
 }
 
-.intro-attribution {
+.intro-attribution{
   margin-top: 20px;
   font-style: italic;
   color: #666;
 }
 
-/* --- DIVISIONS GRID --- */
-.grid {
+/* =========================
+   ECOSYSTEM GRID
+========================= */
+
+.grid{
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* always 4 */
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-top: 50px;
 }
 
-/* small screens: 1 column */
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 700px){
+  .grid{ grid-template-columns: 1fr; }
 }
 
 .card{
   background: var(--panel);
   border: 1px solid var(--border);
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover{
@@ -201,61 +221,58 @@ h1, h2, h3 {
   border-color: var(--accent);
 }
 
-.card h3 {
+.card h3{
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: var(--chrome-silver);
 }
 
-.card p {
+.card p{
   color: #aaa;
   font-size: 0.95rem;
 }
 
-.card-icon {
+.card-icon{
   font-size: 2rem;
   margin-bottom: 20px;
   display: block;
 }
 
-/* --- NETWORK STATE SECTION --- */
-.network-state {
-  background: linear-gradient(180deg, var(--void-black) 0%, #111 100%);
+/* =========================
+   NETWORK STATE SECTION
+========================= */
+
+.network-state{
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
   border-top: 1px solid #222;
   border-bottom: 1px solid #222;
 }
 
-.split-layout {
+.split-layout{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 50px;
 }
 
-.split-text {
+.split-text{
   flex: 1;
   min-width: 300px;
 }
 
-.split-text h2 {
-  margin-bottom: 20px;
-}
+.split-text h2{ margin-bottom: 20px; }
 
-.split-text p {
+.split-text p{
   color: #ccc;
   margin-bottom: 20px;
 }
 
-.split-text p:last-child {
-  margin-bottom: 0;
-}
+.split-text p:last-child{ margin-bottom: 0; }
 
-.split-visual {
+.split-visual{
   flex: 1;
   min-width: 300px;
   height: 400px;
-
-  /* stripped map background */
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border: 1px solid #333;
 
@@ -267,18 +284,21 @@ h1, h2, h3 {
   letter-spacing: 2px;
 }
 
-.visual-label {
+.visual-label{
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
-/* --- PLEDGE SECTION (INTERACTIVE) --- */
-.pledge-section {
+/* =========================
+   PLEDGE SECTION
+========================= */
+
+.pledge-section{
   text-align: center;
   background: radial-gradient(circle at center, #222 0%, #000 80%);
 }
 
-.pledge-box {
+.pledge-box{
   background: rgba(0,0,0,0.8);
   border: 1px solid var(--accent-2);
   padding: 60px;
@@ -287,29 +307,30 @@ h1, h2, h3 {
   position: relative;
 }
 
-.pledge-box::before {
+.pledge-box::before{
   content: "SYSTEM UPLINK: ACTIVE";
   position: absolute;
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--void-black);
+  background: var(--bg);
   padding: 0 20px;
-  color: var(--gold-accent);
+  color: var(--accent-2);
   font-size: 0.8rem;
   letter-spacing: 0.2em;
 }
 
-.pledge-title {
-  color: var(--gold-accent);
+.pledge-title{
+  color: var(--accent-2);
   margin-bottom: 20px;
 }
 
-.pledge-text {
+.pledge-text{
   margin-bottom: 30px;
 }
 
-.btn-group {
+/* Buttons: sane defaults */
+.btn-group{
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -317,12 +338,11 @@ h1, h2, h3 {
   flex-wrap: wrap;
 }
 
-.btn {
+.btn{
   padding: 15px 30px;
-  border: 1px solid var(--sterile-white);
+  border: 1px solid var(--text);
   background: transparent;
-  border-color: var(--accent-2);
-  color: var(--accent-2);
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
@@ -331,26 +351,28 @@ h1, h2, h3 {
   font-size: 0.9rem;
 }
 
-.btn:hover {
-  background: var(--sterile-white);
-  color: var(--void-black);
+.btn:hover{
+  background: var(--text);
+  color: var(--bg);
   box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
-.btn-gold {
+.btn-gold{
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+.btn-gold:hover{
   background: var(--accent-2);
-  border-color: var(--gold-accent);
-  color: var(--gold-accent);
-}
-
-.btn-gold:hover {
-  background: var(--gold-accent);
   color: #000;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(212,175,55,0.3);
 }
 
-/* --- FOOTER --- */
-footer {
+/* =========================
+   FOOTER
+========================= */
+
+footer{
   padding: 50px 20px;
   text-align: center;
   border-top: 1px solid #222;
@@ -358,52 +380,52 @@ footer {
   font-size: 0.8rem;
 }
 
-.footer-links {
+.footer-links{
   margin-top: 10px;
 }
 
-.footer-links a {
+.footer-links a{
   color: #555;
   text-decoration: none;
 }
 
-.footer-links a:hover {
+.footer-links a:hover{
   color: #aaa;
 }
 
-.footer-warning {
+.footer-warning{
   margin-top: 20px;
   font-size: 0.7rem;
   opacity: 0.5;
 }
 
-.redacted {
+/* Redaction gag */
+.redacted{
   background-color: #555;
   color: #555;
   user-select: none;
 }
 
-.redacted:hover {
+.redacted:hover{
   background-color: transparent;
   color: #fff;
   transition: 0.3s;
 }
 
-/* --- ANIMATIONS --- */
-@keyframes pulse {
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pulse{
   0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  50%{ opacity: 1; }
+  100%{ opacity: 0.6; }
 }
 
-body[data-theme="corpo-xmas"] .hero p{
-  color: var(--muted);
-}
-body[data-theme="corpo-xmas"] .pledge-box::before{
-  color: var(--accent-2);
-}
+/* =========================
+   FALLING SPURS OVERLAY
+========================= */
 
-/* Falling Spurs overlay */
 #falling-spurs{
   position: fixed;
   inset: 0;
