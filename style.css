@@ -90,15 +90,36 @@ h1, h2, h3 {
   z-index: 0;
 }
 
-.hero-content {
-  z-index: 2;
+.hero-content{
+  max-width: min(980px, 92vw);
+  padding: 0 14px;
 }
 
-.hero h1 {
+.hero h1{
+  /* responsive size instead of a fixed 4rem */
+  font-size: clamp(2.0rem, 7vw, 4rem);
+  line-height: 1.05;
+
+  /* letter-spacing that shrinks on small screens */
+  letter-spacing: clamp(0.06em, 1.2vw, 0.2em);
+
+  /* allow wrapping safely */
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+  
   font-size: 4rem;
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+}
+
+/* extra-tight phones */
+@media (max-width: 420px){
+  .hero h1{
+    letter-spacing: 0.06em;
+  }
 }
 
 .hero p {
