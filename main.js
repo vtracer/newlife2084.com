@@ -167,6 +167,14 @@ function initFallingSpurs() {
 
   // Prevent duplicates if the page hot-reloads
   wrap.innerHTML = "";
+  
+  const rareGold = Math.random() < 0.03; // 3% “loot drop”
+	el.style.setProperty("--spark", rareGold ? "rgba(212,175,55,0.95)" : "rgba(255,255,255,0.9)");
+  
+  if (rareGold) {
+  el.style.opacity = Math.min(1, o + 0.15);
+  el.style.filter = "drop-shadow(0 0 10px rgba(212,175,55,0.45))";
+}
 
   const svg = `data:image/svg+xml,${encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
