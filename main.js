@@ -7,9 +7,15 @@ function pickThemeForToday() {
   const THEMES = [
     {
       name: "corpo-xmas",
-      start: new Date(y, 11, 1),     // Dec 1
-      end:   new Date(y + 1, 0, 1),  // Jan 1
-      decorations: ["titleLights", "spurSnow"] // <- NOT always lights, just whatever you want
+      start: new Date(y - 1, 11, 1),  // Dec 1 of last year
+      end:   new Date(y, 0, 1),       // Jan 1 of this year
+      decorations: ["titleLights", "spurSnow"] // <- Lights only in December
+    },
+    {
+      name: "corpo-january",
+      start: new Date(y, 0, 1),       // Jan 1
+      end:   new Date(y, 1, 1),       // Feb 1
+      decorations: ["spurSnow"]       // <- Just spurflakes in January
     },
     {
       name: "corpo-halloween",
@@ -167,14 +173,7 @@ function initFallingSpurs() {
 
   // Prevent duplicates if the page hot-reloads
   wrap.innerHTML = "";
-  
-  const rareGold = Math.random() < 0.03; // 3% “loot drop”
-	el.style.setProperty("--spark", rareGold ? "rgba(212,175,55,0.95)" : "rgba(255,255,255,0.9)");
-  
-  if (rareGold) {
-  el.style.opacity = Math.min(1, o + 0.15);
-  el.style.filter = "drop-shadow(0 0 10px rgba(212,175,55,0.45))";
-}
+
 
   const svg = `data:image/svg+xml,${encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
